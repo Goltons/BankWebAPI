@@ -14,7 +14,8 @@ namespace BankWebAPI.Model.Customer
 
         public int CartSupplementNumber = 5000;
         public double CartDeposit { get; set; }
-        public double CartDebt { get; set; }   
+        public double CartDebt { get; set; }
+        public double CartLimit = 1000;
         public int CVC2 { get; set; }
         public DateTime LastDate { get; set; }
         public Account Account { get; set; }
@@ -29,6 +30,7 @@ namespace BankWebAPI.Model.Customer
             DEBIT,
             CREDIT
         }
+        public bool LimitCheck(CartType cartType) { return false; }
 
     }
 }

@@ -40,7 +40,8 @@ namespace BankWebAPI.Repository.CustomerRepository
 
         public void updateCustomer(Customer customer)
         {
-            throw new NotImplementedException();
+            _context.Update(customer);
+            _context.SaveChanges();
         }
     }
 }

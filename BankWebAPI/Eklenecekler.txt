@@ -1,0 +1,8 @@
+﻿cart türüne göre limit belirleme başlangıç 1000tl
+account number generator check method byte kullanarak veya asal sayılar ile işlem yapmak lazım asal sayı oluşturucu 
+şube kodları için json dosyası oluşturmak oradan seçtirmek js tarafında
+jwt
+repo
+tr
+doğrulama
+react login/register

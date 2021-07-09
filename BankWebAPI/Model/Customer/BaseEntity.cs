@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Model.Customer
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         public DateTime CreatedDate = DateTime.Now;
-        public DateTime UpdatedDAte { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

@@ -11,7 +11,6 @@ namespace BankWebAPI.Model.Customer
     {
         [Key]
         public int AccountId { get; set; }
-       
         public string AccountName { get; set; }
         public double TotalDeposit { get; set; }
         public double TotalDebt { get; set; }

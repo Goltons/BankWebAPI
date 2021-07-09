@@ -13,5 +13,10 @@ namespace BankWebAPI.Controllers
         {
 
         }
+        [HttpGet]
+        public  string login()
+        {
+            return "login sayfası";
+        }
     }
 }
