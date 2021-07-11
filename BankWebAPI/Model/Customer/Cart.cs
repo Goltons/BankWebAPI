@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Model.Customer
 {
-    public class Cart:BaseEntity
+    public class Cart : BaseEntity
     {
         public int CartId { get; set; }
         public int CartPassword { get; set; }
@@ -17,6 +17,7 @@ namespace BankWebAPI.Model.Customer
         public double CartDebt { get; set; }
         public double CartLimit = 1000;
         public int CVC2 { get; set; }
+        public bool IsActive { get; set; }
         public DateTime LastDate { get; set; }
         public Account Account { get; set; }
         public enum CartCurrencyType
@@ -30,7 +31,7 @@ namespace BankWebAPI.Model.Customer
             DEBIT,
             CREDIT
         }
-        public bool LimitCheck(CartType cartType) { return false; }
+
 
     }
 }

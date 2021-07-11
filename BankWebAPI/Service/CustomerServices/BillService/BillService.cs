@@ -1,12 +1,11 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
-using BankWebAPI.Service.CustomerService.BillService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BankWebAPI.Service.CustomerService.BillService
+namespace BankWebAPI.Service.CustomerServices.BillService
 {
     public class BillService : IBillService
     {

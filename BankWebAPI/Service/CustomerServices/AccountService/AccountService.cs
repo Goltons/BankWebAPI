@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BankWebAPI.Service.CustomerService.AccountService
+namespace BankWebAPI.Service.CustomerServices.AccountService
 {
     public class AccountService : IAccountService
     {

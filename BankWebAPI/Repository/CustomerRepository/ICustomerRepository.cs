@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository
 {
-    interface ICustomerRepository
+    public interface ICustomerRepository
     {
         void Register(Customer customer);
         Customer CustomerGetById(int id);

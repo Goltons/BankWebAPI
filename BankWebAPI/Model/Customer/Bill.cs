@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Model.Customer
 {
-    public class Bill:BaseEntity
+    public class Bill : BaseEntity
     {
         public int BillId { get; set; }
         public string BillNumber { get; set; }
         public double BillFee { get; set; }
-        public bool isApproved { get; set; }
+        public bool IsApproved { get; set; }
+        public Customer Customer { get; set; }
         public enum BillType
         {
             ELECTRICITY,

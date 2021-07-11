@@ -18,11 +18,27 @@ namespace BankWebAPI.Repository.CustomerRepository
         }
         public Customer CustomerGetById(int id)
         {
-            Customer customer= _context.Customers.FirstOrDefault(p => 
-            p.CustomerId == id);
+            Customer customer = _context.Customers.FirstOrDefault(p =>
+             p.CustomerId == id);
             if (customer == null) throw new ArgumentNullException();
             return customer;
         }
+
+        public void delete(Customer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Customer> getAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Customer GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Customer GetByTcNo(long tcNo)
         {
             Customer customer = _context.Customers.FirstOrDefault(p =>
@@ -33,9 +49,19 @@ namespace BankWebAPI.Repository.CustomerRepository
 
         public void Register(Customer customer)
         {
-            if (GetByTcNo(customer.TcNo) != null ) throw new AccessViolationException();
+
             _context.Add(customer);
             _context.SaveChanges();
+        }
+
+        public void save(Customer entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void update(Customer entity)
+        {
+            throw new NotImplementedException();
         }
 
         public void updateCustomer(Customer customer)

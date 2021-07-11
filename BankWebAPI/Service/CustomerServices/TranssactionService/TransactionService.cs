@@ -1,11 +1,10 @@
-﻿using BankWebAPI.Model.Customer;
-using BankWebAPI.Model.Customer.EFDbContext;
+﻿using BankWebAPI.Model.Customer.EFDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BankWebAPI.Service.CustomerService.TranssactionService
+namespace BankWebAPI.Service.CustomerServices.TranssactionService
 {
     public class TransactionService : ITransactionService
     {

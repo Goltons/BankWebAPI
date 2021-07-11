@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 <GenerateRuntimeConfigurationFiles>True</GenerateRuntimeConfigurationFiles>
+<StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
-    <Folder Include="Repository\BillRepository\" />
   </ItemGroup>
 
   <ItemGroup>

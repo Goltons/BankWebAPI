@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BankWebAPI.Repository.AccountRepository
+namespace BankWebAPI.Repository
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T:class
+    public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
         private readonly ApplicationDbContext _context;
         private DbSet<T> _entities;
         public BaseRepository(ApplicationDbContext context)
         {
-            _context=context;
+            _context = context;
             _entities = context.Set<T>();
         }
         public void delete(T entity)
@@ -24,7 +24,7 @@ namespace BankWebAPI.Repository.AccountRepository
 
         public List<T> getAll()
         {
-            return _entities.ToList<T>();
+            return _entities.ToList();
         }
 
         public T GetById(int id)
