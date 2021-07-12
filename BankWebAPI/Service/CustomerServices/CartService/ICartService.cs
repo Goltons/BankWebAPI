@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.CartService
 {
-    interface ICartService
+    public interface ICartService
     {
         void AddNewCartToAcc(Cart cart);
         void DeleteCartFromAccount(int id);
@@ -14,6 +14,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         void IncreaseCartLimit(int id, double amount);
         void DecreaseCartLimit(int id, double amaunt);
         void PayCartDebt(int id, double amountToPay);
-        void UseCartLimit(int id, double amountToUse);
+       
     }
 }

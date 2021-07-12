@@ -1,4 +1,5 @@
-﻿using BankWebAPI.Model.Customer.EFDbContext;
+﻿using BankWebAPI.Model.Customer;
+using BankWebAPI.Model.Customer.EFDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,17 +18,15 @@ namespace BankWebAPI.Service.CustomerServices.TranssactionService
 
         public void SendToIBAN(string senderIBAN, string receiverIBAN, double amount)
         {
-            /*
-             * repository içinde yazılacak
             Cart sender = _context.Carts.FirstOrDefault(p => p.IBAN == senderIBAN);
             Cart receiver = _context.Carts.FirstOrDefault(p => p.IBAN == receiverIBAN);
-            if (sender.CartDeposit < amount) throw new Exception();
+            if (sender == null || receiver == null) throw new Exception("yanlış bilgi girdiniz");
+            if (sender.CartDeposit < amount) throw new Exception("yetersiz bakiye");
             sender.CartDeposit -= amount;
             receiver.CartDeposit += amount;
-            _context.Update(sender);
-            _context.Update(receiver);
+            _context.Carts.Update(sender);
+            _context.Carts.Update(receiver);
             _context.SaveChanges();
-            */
         }
     }
 }

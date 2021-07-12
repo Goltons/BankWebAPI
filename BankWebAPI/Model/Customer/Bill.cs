@@ -7,6 +7,10 @@ namespace BankWebAPI.Model.Customer
 {
     public class Bill : BaseEntity
     {
+        public Bill()
+        {
+
+        }
         public int BillId { get; set; }
         public string BillNumber { get; set; }
         public double BillFee { get; set; }

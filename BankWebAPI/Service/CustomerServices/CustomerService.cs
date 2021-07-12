@@ -1,5 +1,6 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
+using BankWebAPI.Repository.CustomerRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,23 +10,24 @@ namespace BankWebAPI.Service.CustomerServices
 {
     public class CustomerService : ICustomerService
     {
-        //private readonly CustomerRepository _customerRepository;
-        private readonly ApplicationDbContext _context;
-
-        public CustomerService(ApplicationDbContext context)
+        private readonly ICustomerRepository _customerRepository;
+        public CustomerService(ICustomerRepository customerRepository)
         {
-            _context = context;
+            _customerRepository = customerRepository;
         }
-        //jwt
-        public void Login(long TcNo, string password)
+        public void Login(string TcNo, string password)
         {
-            throw new NotImplementedException();
+            //jwt kodları eklenecek 
+            Customer customer = new Customer();
+            if (_customerRepository.GetByTcNo(TcNo) == null) throw new Exception();
+            
         }
 
         public void Register(Customer customer)
         {
-            _context.Customers.Add(customer);
-            _context.SaveChanges();
+            customer.CreatedDate = DateTime.Now;
+            _customerRepository.register(customer);
+
         }
     }
 }

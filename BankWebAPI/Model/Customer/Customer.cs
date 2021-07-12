@@ -9,18 +9,32 @@ namespace BankWebAPI.Model.Customer
     public class Customer : BaseEntity
     {
 
+        public Customer()
+        {}
         [Key]
         public int CustomerId { get; set; }
-        public long TcNo { get; set; }
+        [StringLength(11)]
+        [Required]
+        public string TcNo { get; set; }
+        [Required]
         public string CustomerName { get; set; }
+        [Required]
+        [StringLength(8)]
         public string CustomerPassword { get; set; }
+        [Required]
         public string MotherName { get; set; }
+        [Required]
         public string FatherName { get; set; }
+        [Required]
         public string Adress { get; set; }
-        public long PhoneNumber { get; set; }
+        [Required]
+        [MaxLength(11)]
+        public string PhoneNumber { get; set; }
         public bool IsEnable { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Loan> Loans { get; set; }
+        public List<Transaction> Transactions { get; set; }
+        public List<Bill> Bills { get; set; }
 
 
     }

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository
 {
-    public interface ICustomerRepository
+    public interface ICustomerRepository:IBaseRepository<Customer>
     {
-        void Register(Customer customer);
-        Customer CustomerGetById(int id);
-        Customer GetByTcNo(long tcNo);
-        void updateCustomer(Customer customer);
+        void register(Customer customer);
+        Customer GetByTcNo(string tcNo);
     }
 }

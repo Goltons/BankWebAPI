@@ -39,7 +39,7 @@ namespace BankWebAPI.Repository.CustomerRepository
             throw new NotImplementedException();
         }
 
-        public Customer GetByTcNo(long tcNo)
+        public Customer GetByTcNo(string tcNo)
         {
             Customer customer = _context.Customers.FirstOrDefault(p =>
               p.TcNo == tcNo);
@@ -50,6 +50,12 @@ namespace BankWebAPI.Repository.CustomerRepository
         public void Register(Customer customer)
         {
 
+            _context.Add(customer);
+            _context.SaveChanges();
+        }
+
+        public void register(Customer customer)
+        {
             _context.Add(customer);
             _context.SaveChanges();
         }

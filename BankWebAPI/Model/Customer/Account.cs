@@ -9,6 +9,10 @@ namespace BankWebAPI.Model.Customer
 {
     public class Account : BaseEntity
     {
+        public Account()
+        {
+
+        }
         public int AccountId { get; set; }
         public string AccountName { get; set; }
         public double TotalDeposit { get; set; }

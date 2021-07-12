@@ -25,7 +25,7 @@ namespace BankWebAPI.Repository.CustomerRepository.LoanRepository
             throw new NotImplementedException();
         }
 
-        public List<Loan> GetAllByTcNo(long tcNo)
+        public List<Loan> GetAllByTcNo(string tcNo)
         {
             return (List<Loan>)_context.Loans.ToList().Where(p => p.Customer.TcNo == tcNo);
         }
@@ -35,7 +35,7 @@ namespace BankWebAPI.Repository.CustomerRepository.LoanRepository
             return _context.Loans.FirstOrDefault(p => p.LoanId == id);
         }
 
-        public Loan GetByTcNo(long tcNo)
+        public Loan GetByTcNo(string tcNo)
         {
             return _context.Loans.FirstOrDefault(p => p.Customer.TcNo == tcNo);
         }

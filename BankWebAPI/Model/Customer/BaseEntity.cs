@@ -7,7 +7,11 @@ namespace BankWebAPI.Model.Customer
 {
     public abstract class BaseEntity
     {
-        public DateTime CreatedDate = DateTime.Now;
+        public BaseEntity()
+        {
+
+        }
+        public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
     }
 }

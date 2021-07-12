@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.LoanRepository
 {
-    interface ILoanRepository
+    public interface ILoanRepository : IBaseRepository<Loan>
     {
-        List<Loan> GetAllByTcNo(long tcNo);
-        Loan GetByTcNo(long tcNo);
+        List<Loan> GetAllByTcNo(string tcNo);
+        Loan GetByTcNo(string tcNo);
 
     }
 }

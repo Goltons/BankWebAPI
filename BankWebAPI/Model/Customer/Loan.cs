@@ -7,6 +7,10 @@ namespace BankWebAPI.Model.Customer
 {
     public class Loan : BaseEntity
     {
+        public Loan()
+        {
+
+        }
         const double PERSONAL_LOAN_INTEREST_RATE = 0.75;
         const double HOME_LOAN_INTEREST_RATE = 0.85;
         const double VEHICLE_LOAN_INTEREST_RATE = 0.98;

@@ -1,5 +1,6 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
+using BankWebAPI.Repository.CustomerRepository.AccountRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,19 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
 {
     public class AccountService : IAccountService
     {
-        private readonly ApplicationDbContext _context;
-        public AccountService(ApplicationDbContext context)
+        private readonly IAccountRepository _accountRepository;
+        public AccountService(IAccountRepository accountRepository)
         {
-            _context = context;
+            _accountRepository = accountRepository;
         }
         public void AddAccount(Account account)
         {
-            throw new NotImplementedException();
+                      
+            _accountRepository.save(account);
         }
-
-        public void GetAccountByAccountNumber(int AccountNumber)
+        public Account GetAccountByAccountNumber(int AccountNumber)
         {
-            throw new NotImplementedException();
+            return _accountRepository.getByAccountNumber(AccountNumber);   
         }
     }
 }

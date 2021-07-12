@@ -1,4 +1,5 @@
 ﻿using BankWebAPI.Model.Customer;
+using BankWebAPI.Repository.CustomerRepository.CartRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,39 +9,44 @@ namespace BankWebAPI.Service.CustomerServices.CartService
 {
     public class CartService : ICartService
     {
+        private readonly ICartRepository _cartRepository;
+        public CartService(ICartRepository cartRepository)
+        {
+            _cartRepository = cartRepository;
+        }
         public void AddNewCartToAcc(Cart cart)
         {
-            throw new NotImplementedException();
-        }
+            _cartRepository.save(cart);
 
+        }
         public void CloseCartLimit(int id)
         {
-            throw new NotImplementedException();
+            Cart cart = _cartRepository.GetById(id);
+            cart.CartLimit = 0;
+            _cartRepository.update(cart);
         }
-
         public void DecreaseCartLimit(int id, double amaunt)
         {
-            throw new NotImplementedException();
+            Cart cart = _cartRepository.GetById(id);
+            cart.CartLimit -= 100;
+            _cartRepository.update(cart);
         }
-
         public void DeleteCartFromAccount(int id)
         {
-            throw new NotImplementedException();
+            _cartRepository.delete(_cartRepository.GetById(id));
         }
-
         public void IncreaseCartLimit(int id, double amount)
         {
-            throw new NotImplementedException();
+            Cart cart = _cartRepository.GetById(id);
+            cart.CartLimit += 100;
+            _cartRepository.update(cart);
         }
-
         public void PayCartDebt(int id, double amountToPay)
         {
-            throw new NotImplementedException();
+            Cart cart = _cartRepository.GetById(id);
+            cart.CartDebt-= amountToPay;
+            _cartRepository.update(cart);
         }
 
-        public void UseCartLimit(int id, double amountToUse)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

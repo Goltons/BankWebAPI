@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
 {
-    public class AccountRepository : IAccountRepository
+    public class AccountRepository : IAccountRepository,IBaseRepository<Account>
     {
         private readonly ApplicationDbContext _context;
         public AccountRepository(ApplicationDbContext context)
@@ -41,6 +41,12 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         public List<Account> getAll()
         {
             return _context.Accounts.ToList();
+        }
+
+        public Account getByAccountNumber(int AccountNumber)
+        {
+            return _context.Accounts.FirstOrDefault(
+                p => p.AccountNumber == AccountNumber);
         }
     }
 }

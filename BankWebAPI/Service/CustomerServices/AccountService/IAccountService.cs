@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.AccountService
 {
-    interface IAccountService
+    public interface IAccountService
     {
         void AddAccount(Account account);
-        void GetAccountByAccountNumber(int AccountNumber);
+        Account GetAccountByAccountNumber(int AccountNumber);
     }
 }

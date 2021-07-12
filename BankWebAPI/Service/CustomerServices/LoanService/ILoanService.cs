@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.LoanService
 {
-    interface ILoanService
+    public interface ILoanService
     {
         void TakeLoan(long tcNo, double amount, int LoanTerm, string LoanType);
         void PayLaonDebt(int loanId, double amountToPay);

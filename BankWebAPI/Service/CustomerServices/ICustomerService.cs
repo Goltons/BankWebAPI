@@ -9,7 +9,7 @@ namespace BankWebAPI.Service.CustomerServices
     public interface ICustomerService
     {
         //jwt eklenecek
-        void Login(long TcNo, string password);
+        void Login(string TcNo, string password);
         void Register(Customer customer);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
+using BankWebAPI.Repository.CustomerRepository.BillRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,21 +10,20 @@ namespace BankWebAPI.Service.CustomerServices.BillService
 {
     public class BillService : IBillService
     {
-        private readonly ApplicationDbContext _context;
-        public BillService(ApplicationDbContext context)
+        private readonly IBillRepository _billRepository;
+        public BillService(IBillRepository billRepository)
         {
-            _context = context;
+            _billRepository = billRepository;
         }
-
         public Bill GetBillByBillNumber(string BillNumber)
         {
-            return _context.Bills.FirstOrDefault(p => p.BillNumber == BillNumber);
+            return _billRepository.getBillByBillNumber(BillNumber);
         }
-
-
         public Bill PayBillFee(string BillNumber)
         {
-            throw new NotImplementedException();
+            Bill bill = _billRepository.getBillByBillNumber(BillNumber);
+            bill.BillFee = 0
+            return new Bill();
         }
     }
 }

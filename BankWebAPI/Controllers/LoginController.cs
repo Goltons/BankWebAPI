@@ -1,26 +1,33 @@
 ﻿using BankWebAPI.Model.Customer;
+using BankWebAPI.Repository.CustomerRepository;
 using BankWebAPI.Service.CustomerServices;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace BankWebAPI.Controllers
 {
-    [Route("/api/müsteri")]
+    [Route("/api/müşteri")]
     public class LoginController:Controller
     {
-        private  readonly ICustomerService _customerService;
+        private readonly ICustomerService _customerService;
         public LoginController(ICustomerService customerService)
         {
             _customerService = customerService;
         }
-        [HttpGet]
-        public string anasayfa()
-        {
-            return "anasayfa";
-        }
-        [HttpPost("kayit")]
-        public  string login([FromBody] Customer customer)
+        [HttpPost]
+        [Route("register")]
+        public string  register([FromBody] Customer customer)
         {
             _customerService.Register(customer);
+            return "başarı ile kayıt oldu.";
+        }
+
+        [HttpGet]
+        public  string Login()
+        {
             
             return "login sayfası";
         }
