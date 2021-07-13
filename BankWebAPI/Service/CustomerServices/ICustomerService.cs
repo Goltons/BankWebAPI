@@ -11,5 +11,7 @@ namespace BankWebAPI.Service.CustomerServices
         //jwt eklenecek
         void Login(string TcNo, string password);
         void Register(Customer customer);
+
+        Customer GetByTcNo(string tcNo);
     }
 }

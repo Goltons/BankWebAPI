@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -20,15 +21,6 @@ namespace BankWebAPI.Model.Customer
         public bool IsApproved { get; set; }
         public bool IsPaid { get; set; }
         public Customer Customer { get; set; }
-        public enum LoanType
-        {
-            PERSONAL,
-            HOME,
-            VEHICLE
-        }
-        public string[] PaymentPlan(Loan loan)
-        {
-            return new string[0];
-        }
+        public LoanType LoanType{ get; set; }
     }
 }

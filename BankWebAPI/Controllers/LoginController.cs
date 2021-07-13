@@ -24,12 +24,17 @@ namespace BankWebAPI.Controllers
             _customerService.Register(customer);
             return "başarı ile kayıt oldu.";
         }
-
-        [HttpGet]
-        public  string Login()
+        //[HttpGet]
+        //public  string Login()
+        //{
+            
+        //    return "login sayfası";
+        //}
+        [HttpGet("{tcno}")]
+        public Customer GetCustomerByTcNo( string tcno)
         {
             
-            return "login sayfası";
+            return _customerService.GetByTcNo(tcno);
         }
     }
 }

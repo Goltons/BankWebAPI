@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 {
-   public interface IBillRepository 
+   public interface IBillRepository :IBaseRepository<Bill>
     {
         Bill getBillByBillNumber(string billNo);
+        List<Bill> GetPaidBillsByTcNo(string tcNo);
     }
 }

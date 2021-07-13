@@ -13,7 +13,7 @@ namespace BankWebAPI.Model.Customer
         {}
         [Key]
         public int CustomerId { get; set; }
-        [StringLength(11)]
+        [StringLength(11,ErrorMessage ="11 basamak olmalı.")]
         [Required]
         public string TcNo { get; set; }
         [Required]

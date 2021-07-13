@@ -10,5 +10,7 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
     {
         void AddAccount(Account account);
         Account GetAccountByAccountNumber(int AccountNumber);
+
+        int AccountNumberGenerator();
     }
 }

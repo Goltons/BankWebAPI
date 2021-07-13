@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -22,10 +23,6 @@ namespace BankWebAPI.Model.Customer
         public bool IsActive { get; set; }
         public Customer Customer { get; set; }
         public List<Cart> Carts { get; set; }
-        public enum AccountType
-        {
-            CHECKING,
-            DEPOSIT
-        }
+        public AccountType AccountType { get; set; }
     }
 }

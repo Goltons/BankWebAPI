@@ -27,11 +27,11 @@ namespace BankWebAPI.Service.CustomerServices.LoanService
         public void PayLaonDebt(int loanId, double amountToPay)
         {
             //loanı bulup ilk ödemeyi diziden silmek daha sonra borcu güncelleyi geri dönöek
-            throw new NotImplementedException();
+           
         }
         public void TakeLoan(long tcNo, double amount, int LoanTerm, string LoanType)
         {//loan validate,mhizden onay beklenmesi
-            throw new NotImplementedException();
+            
         }
     }
 }

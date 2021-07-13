@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -16,13 +17,6 @@ namespace BankWebAPI.Model.Customer
         public double BillFee { get; set; }
         public bool IsApproved { get; set; }
         public Customer Customer { get; set; }
-        public enum BillType
-        {
-            ELECTRICITY,
-            WATER,
-            GAS,
-            PHONE,
-            INTERNET
-        }
+        public BillType BillType{ get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
 {
-    public class AccountRepository : IAccountRepository,IBaseRepository<Account>
+    public class AccountRepository : IAccountRepository
     {
         private readonly ApplicationDbContext _context;
         public AccountRepository(ApplicationDbContext context)

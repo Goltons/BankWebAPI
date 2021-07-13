@@ -17,6 +17,8 @@ using BankWebAPI.Repository.CustomerRepository.LoanRepository;
 using BankWebAPI.Service.CustomerServices.LoanService;
 using BankWebAPI.Service.CustomerServices.BillService;
 using BankWebAPI.Repository.CustomerRepository.BillRepository;
+using BankWebAPI.Repository.CustomerRepository.TransactionRepository;
+using BankWebAPI.Service.CustomerServices.TranssactionService;
 
 namespace BankWebAPI
 {
@@ -43,6 +45,8 @@ namespace BankWebAPI
             services.AddSingleton<ILoanService, LoanService>();
             services.AddSingleton<IBillService, BillService>();
             services.AddTransient<IBillRepository,BillRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
+            services.AddSingleton<ITransactionService, TransactionService>();
             
             
             services.AddDbContext<ApplicationDbContext>

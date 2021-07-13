@@ -35,6 +35,22 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         {
             _cartRepository.delete(_cartRepository.GetById(id));
         }
+
+        public string IBANGenerate()
+        {
+            Random rnd = new Random();
+            string iban = "";
+            for (int i = 0; i < 16; i++)
+            {
+                int a = rnd.Next(0, 10);
+                if (a == 0 && i == 0) iban += rnd.Next(1, 10).ToString();
+                iban += a.ToString();
+                
+            }
+            return iban;
+        }
+
+
         public void IncreaseCartLimit(int id, double amount)
         {
             Cart cart = _cartRepository.GetById(id);

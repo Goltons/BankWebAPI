@@ -28,7 +28,7 @@ namespace BankWebAPI.Controllers
             return "başarı ile kapatıldı";
         }
         [HttpPost("/{id}/{amount}")]
-        public string PayCartDebt(int id,double amount) {
+        public string PayCartDebt([FromRoute]int id,[FromRoute]double amount) {
             _cartService.PayCartDebt(id, amount);
             return String.Format("başarı ile {0} ödendi.", amount);
         }

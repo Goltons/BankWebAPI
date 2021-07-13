@@ -43,7 +43,7 @@ namespace BankWebAPI.Repository.CustomerRepository
         {
             Customer customer = _context.Customers.FirstOrDefault(p =>
               p.TcNo == tcNo);
-            if (customer == null) throw new ArgumentNullException();
+            //if (customer == null) throw new ArgumentNullException();
             return customer;
         }
 

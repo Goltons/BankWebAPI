@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 {
-    public class BillRepository : IBaseRepository<Bill>,IBillRepository
+    public class BillRepository : IBillRepository
     {
         private readonly ApplicationDbContext _context;
-        public BillRepository(ApplicationDbContext context)
+        private readonly ICustomerRepository _customerRepository;
+        public BillRepository(ApplicationDbContext context, ICustomerRepository customerRepository)
         {
             _context = context;
+            _customerRepository = customerRepository;
         }
         public void delete(Bill entity)
         {
@@ -32,6 +34,14 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
         public Bill GetById(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public List<Bill> GetPaidBillsByTcNo(string tcNo)
+        {
+            Customer customer = _context.Customers.FirstOrDefault(p => p.TcNo == tcNo);
+            List<Bill> paidBills = (List<Bill>)_context.Bills.ToList()
+                .Where(p => p.IsApproved == true && customer.CustomerId == p.Customer.CustomerId);
+            return paidBills;
         }
 
         public void save(Bill entity)

@@ -10,5 +10,6 @@ namespace BankWebAPI.Service.CustomerServices.BillService
     {
         Bill PayBillFee(string BillNumber);
         Bill GetBillByBillNumber(string BillNumber);
+        List<Bill> GetPaidBills(string tcNo);
     }
 }

@@ -15,10 +15,15 @@ namespace BankWebAPI.Service.CustomerServices
         {
             _customerRepository = customerRepository;
         }
+
+        public Customer GetByTcNo(string tcNo)
+        {
+            return _customerRepository.GetByTcNo(tcNo);
+        }
+
         public void Login(string TcNo, string password)
         {
             //jwt kodları eklenecek 
-            Customer customer = new Customer();
             if (_customerRepository.GetByTcNo(TcNo) == null) throw new Exception();
             
         }

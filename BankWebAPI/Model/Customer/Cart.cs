@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -31,18 +32,9 @@ namespace BankWebAPI.Model.Customer
         public bool IsActive { get; set; }
         public DateTime LastDate { get; set; }
         public Account Account { get; set; }
-        public enum CartCurrencyType
-        {
-            TRY,
-            USD,
-            EUR
-        }
-        public enum CartType
-        {
-            DEBIT,
-            CREDIT
-        }
-
+        public CartCurrencyType CartCurrencyType{ get; set; }
+        public CartType CartType { get; set; }
+        
 
     }
 
