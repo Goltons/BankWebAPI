@@ -14,11 +14,10 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
         {
             _context = context;
         }
-        //kontrol kodlarının yazılması ve ardından veritabanına kaydedilmesi
 
         public void delete(Cart entity)
         {
-            //accno ya göre bulup kontrol edilecek servis sınıfında yazılacak kodları 
+           
             _context.Carts.Remove(entity);
             _context.SaveChanges();
         }

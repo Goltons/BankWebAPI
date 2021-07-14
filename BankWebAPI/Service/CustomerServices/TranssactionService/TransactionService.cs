@@ -15,7 +15,6 @@ namespace BankWebAPI.Service.CustomerServices.TranssactionService
         {
             _context = context;
         }
-
         public void SendToIBAN(string senderIBAN, string receiverIBAN, double amount)
         {
             Cart sender = _context.Carts.FirstOrDefault(p => p.IBAN == senderIBAN);

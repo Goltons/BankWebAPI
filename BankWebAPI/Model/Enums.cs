@@ -7,7 +7,6 @@ namespace BankWebAPI.Model
 {
     public class Enums
     {
-       
         public enum AccountType
         {
             CHECKING,

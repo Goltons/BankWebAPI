@@ -10,5 +10,6 @@ namespace BankWebAPI.Repository.CustomerRepository
     {
         void register(Customer customer);
         Customer GetByTcNo(string tcNo);
+        Customer login(string tcNo, string password);
     }
 }

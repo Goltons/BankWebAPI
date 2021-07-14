@@ -1,14 +1,12 @@
-﻿//route query ile veri almaya bak
-//2.hafta backendin bitmesi gerekli 
-react ile register ve login sayfalarını oluşturup jwt ekle reacte ağırlık verilecek birkaç gün boyunca 
+﻿//2.hafta backendin bitmesi gerekli 
+react login olduktan sonra profil sayfasına yönlendirme.modellerde isim değişiklikleri yapma
 cart türüne göre limit belirleme başlangıç 1000tl
-account number generator check method byte kullanarak veya asal sayılar ile işlem yapmak lazım asal sayı oluşturucu 
 şube kodları için json dosyası oluşturmak oradan seçtirmek js tarafında
-jwt
 doğrulama
 kredi ödeme planı 
 //loan servis kodlarının yazılması
 transactionları dosyaya yazma loglama
 rabbitmq,websocket,redis,log ekstra:elastic docker kullanımı
 staj 6.gün servis kodlarının yazılması ve api için controller sınıflarının oluşturulup kodlarının yazılması 
-staj 7.gün react kullanarak giriş ve kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması 
+staj 7.gün react kullanarak  kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması 
+staj 8.gün giriş sayfa tasarımı oluşturulması ve giriş için gerekli method ve fonksiyonların olıuşturulup api ile veritabanından veri alıp doğrulayıp bunları tekrar dönen ve kullanıcı girişini sağlayan methodların oluşturulup yazılması ve react ile tasarımının yapılıp kullanıcı girişinin sağlanması 

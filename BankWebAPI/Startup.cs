@@ -19,6 +19,11 @@ using BankWebAPI.Service.CustomerServices.BillService;
 using BankWebAPI.Repository.CustomerRepository.BillRepository;
 using BankWebAPI.Repository.CustomerRepository.TransactionRepository;
 using BankWebAPI.Service.CustomerServices.TranssactionService;
+using BankWebAPI.Helpers;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Logging;
 
 namespace BankWebAPI
 {
@@ -35,6 +40,36 @@ namespace BankWebAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors();
+            IdentityModelEventSource.ShowPII = true;
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // JWT authentication Aayarlamasý
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+
+
+
+
             services.AddSingleton<ICustomerService, CustomerService>();
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IAccountRepository, AccountRepository>();
@@ -64,6 +99,7 @@ namespace BankWebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
 
             app.UseAuthorization();
 

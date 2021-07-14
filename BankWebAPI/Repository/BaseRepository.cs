@@ -41,7 +41,9 @@ namespace BankWebAPI.Repository
 
         public void update(T entity)
         {
-            throw new NotImplementedException();
+            _context.Update(entity);
+            _entities.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

@@ -28,13 +28,14 @@ namespace BankWebAPI.Model.Customer
         [Required]
         public string Adress { get; set; }
         [Required]
-        [MaxLength(11)]
+        [MaxLength(11,ErrorMessage ="11 basamak olmalı.")]
         public string PhoneNumber { get; set; }
         public bool IsEnable { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Loan> Loans { get; set; }
         public List<Transaction> Transactions { get; set; }
         public List<Bill> Bills { get; set; }
+        public string Token { get; set; }
 
 
     }

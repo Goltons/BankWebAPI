@@ -17,21 +17,9 @@ namespace BankWebAPI.Controllers
         {
             _customerService = customerService;
         }
-        [HttpPost]
-        [Route("register")]
-        public string  register([FromBody] Customer customer)
-        {
-            _customerService.Register(customer);
-            return "başarı ile kayıt oldu.";
-        }
-        //[HttpGet]
-        //public  string Login()
-        //{
-            
-        //    return "login sayfası";
-        //}
+        
         [HttpGet("{tcno}")]
-        public Customer GetCustomerByTcNo( string tcno)
+        public Customer GetCustomerByTcNo(string tcno)
         {
             
             return _customerService.GetByTcNo(tcno);

@@ -27,8 +27,8 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
                 if (i == 0 && b == 0) a += rnd.Next(1, 10).ToString();
                 a+=rnd.Next(0,10).ToString();
             }
-            //tekrar kontrol edip tekrar çağıralabilir fonk veritabanında kayıtlı ise aynı veri
-            return Int32.Parse(a);
+             return Int32.Parse(a);
+
         }
 
         public void AddAccount(Account account)

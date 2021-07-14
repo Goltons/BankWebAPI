@@ -47,6 +47,13 @@ namespace BankWebAPI.Repository.CustomerRepository
             return customer;
         }
 
+        public Customer login(string tcNo, string password)
+        {
+            Customer customerToLogin = _context.Customers.FirstOrDefault(p => p.TcNo == tcNo && p.CustomerPassword == password);
+            if (customerToLogin == null) return null;
+            return customerToLogin;
+        }
+
         public void Register(Customer customer)
         {
 
