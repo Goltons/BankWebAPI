@@ -23,8 +23,8 @@ namespace BankWebAPI.Controllers
             _accountService.AddAccount(account);
             return "hesap eklendi";
         }
-        [HttpGet("/accounts")]
-        public string getAccounts([FromRoute] string tcNo)
+        [HttpGet("/{tcNo}")]
+        public string getAccounts(string tcNo)
         {
 
             return "hesaplar getirildi";

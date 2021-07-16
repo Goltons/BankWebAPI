@@ -22,13 +22,13 @@ namespace BankWebAPI.Controllers
             _cartService.AddNewCartToAcc(cart);
             return "başarı ile eklendi";
         }
-        [HttpPost("/{id}")]
-        public string CloseCartLimit([FromRoute] int id) {
+        [HttpPost("{id}")]
+        public string CloseCartLimit( int id) {
             _cartService.CloseCartLimit(id);
             return "başarı ile kapatıldı";
         }
         [HttpPost("/{id}/{amount}")]
-        public string PayCartDebt([FromRoute]int id,[FromRoute]double amount) {
+        public string PayCartDebt(int id,double amount) {
             _cartService.PayCartDebt(id, amount);
             return String.Format("başarı ile {0} ödendi.", amount);
         }

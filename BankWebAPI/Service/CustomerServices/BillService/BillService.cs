@@ -30,6 +30,7 @@ namespace BankWebAPI.Service.CustomerServices.BillService
         {
             Bill bill = _billRepository.getBillByBillNumber(BillNumber);
             bill.BillFee = 0;
+            bill.IsApproved = true;
             _billRepository.update(bill);
             return bill;
         }

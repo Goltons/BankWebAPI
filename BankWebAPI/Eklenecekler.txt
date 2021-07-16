@@ -3,10 +3,14 @@ react login olduktan sonra profil sayfasına yönlendirme.modellerde isim deği�
 cart türüne göre limit belirleme başlangıç 1000tl
 şube kodları için json dosyası oluşturmak oradan seçtirmek js tarafında
 doğrulama
-kredi ödeme planı 
+hesap limit sınırı ve kart sınırı koyulması belli bir adetin üzerinde oluşturulmayıp hata verilmes eğer kredi borcu varsa ödenmeden yeni kredi verilmemesi kodlarının yazılmaıs 
 //loan servis kodlarının yazılması
+interest rate tablosu banka çalışanları ve müşteri hizmetleri için
 transactionları dosyaya yazma loglama
+accnum ve iban için algoritma yazılması 
 rabbitmq,websocket,redis,log ekstra:elastic docker kullanımı
+bayramdan sonraya kadar react ile işin bitmesi gerekli
 staj 6.gün servis kodlarının yazılması ve api için controller sınıflarının oluşturulup kodlarının yazılması 
 staj 7.gün react kullanarak  kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması 
 staj 8.gün giriş sayfa tasarımı oluşturulması ve giriş için gerekli method ve fonksiyonların olıuşturulup api ile veritabanından veri alıp doğrulayıp bunları tekrar dönen ve kullanıcı girişini sağlayan methodların oluşturulup yazılması ve react ile tasarımının yapılıp kullanıcı girişinin sağlanması 
+staj 9.gün kredi çekme ödeme metodlarının yazılması  ve bunun arayüz tasarımının yapılması react ile api ile ödeme planı alınması ve ödeme yapılması sağlanmıştır.

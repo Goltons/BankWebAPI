@@ -15,7 +15,6 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
         {
             _accountRepository = accountRepository;
         }
-
         public int AccountNumberGenerator()
         {
             string a = "";
@@ -33,7 +32,10 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
 
         public void AddAccount(Account account)
         {
-                      
+            int accnum = AccountNumberGenerator();
+
+            if (_accountRepository.getByAccountNumber(accnum) == null) accnum = AccountNumberGenerator();
+            account.AccountNumber = accnum;
             _accountRepository.save(account);
         }
         public Account GetAccountByAccountNumber(int AccountNumber)

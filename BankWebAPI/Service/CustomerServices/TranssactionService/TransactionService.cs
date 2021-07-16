@@ -19,8 +19,8 @@ namespace BankWebAPI.Service.CustomerServices.TranssactionService
         {
             Cart sender = _context.Carts.FirstOrDefault(p => p.IBAN == senderIBAN);
             Cart receiver = _context.Carts.FirstOrDefault(p => p.IBAN == receiverIBAN);
-            if (sender == null || receiver == null) throw new Exception("yanlış bilgi girdiniz");
-            if (sender.CartDeposit < amount) throw new Exception("yetersiz bakiye");
+            if (sender == null || receiver == null) throw new Exception();
+            if (sender.CartDeposit < amount) throw new Exception();
             sender.CartDeposit -= amount;
             receiver.CartDeposit += amount;
             _context.Carts.Update(sender);
