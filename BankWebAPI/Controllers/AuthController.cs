@@ -19,20 +19,20 @@ namespace BankWebAPI.Controllers
             _customerService = customerService;
         }
         [HttpPost("login")]
-        public Customer Login([FromForm] string tcNo, string customerPassword)
+        public Customer Login([FromForm] string tcNo, string Password)
         {
-            return _customerService.Login(tcNo, customerPassword);
-
+            return _customerService.Login(tcNo, Password);
         }
         [AllowAnonymous]
         [HttpPost]
-        public IActionResult Authenticate([FromForm] string TcNo, string CustomerPassword)
+        public IActionResult Authenticate([FromBody]Customer customer)
         {
-            var user = _customerService.Authenticate(TcNo,CustomerPassword);
+            var user = _customerService.Authenticate(customer.TcNo, customer.Password);
             if (user == null)
                 return BadRequest(new { message = "Kullanici veya şifre hatalı!" });
             return Ok(user);
         }
+        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public void Register([FromForm] Customer customer)

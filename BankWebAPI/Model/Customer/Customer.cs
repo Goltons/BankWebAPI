@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -20,7 +21,7 @@ namespace BankWebAPI.Model.Customer
         public string CustomerName { get; set; }
         [Required]
         [StringLength(8)]
-        public string CustomerPassword { get; set; }
+        public string Password { get; set; }
         [Required]
         public string MotherName { get; set; }
         [Required]
@@ -35,6 +36,7 @@ namespace BankWebAPI.Model.Customer
         public List<Loan> Loans { get; set; }
         public List<Transaction> Transactions { get; set; }
         public List<Bill> Bills { get; set; }
+        public UserRole UserRole{ get; set; }
         public string Token { get; set; }
 
 

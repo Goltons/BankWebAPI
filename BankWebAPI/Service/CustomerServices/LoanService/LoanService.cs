@@ -25,15 +25,11 @@ namespace BankWebAPI.Service.CustomerServices.LoanService
             //kkdf faizin yüzde 15 i kadar
             //bsmv faizin yüzde 5 i kadar
             
-            double faizTutarı=0;
-            double kkdf=0;
-            double bsmv=0;
-            double anapara = 0;
-            double taksit = 0;
+            double faizTutarı, kkdf,bsmv,anapara,taksit;
+            
             taksit = amount * (1.2*interestRate*Math.Pow((1+1.2*interestRate),LoanTerm))
                 /(Math.Pow((1+1.2*interestRate),LoanTerm)-1);
-          
-            
+
             string[] PaymentPlan = new string[LoanTerm];
 
             for (int i = 0; i < LoanTerm; i++)
@@ -42,24 +38,21 @@ namespace BankWebAPI.Service.CustomerServices.LoanService
                 kkdf = faizTutarı * 0.15;
                 bsmv = faizTutarı * 0.05;
                 anapara = taksit - faizTutarı - kkdf - bsmv;
-                amount = amount- anapara;
+                amount -=anapara;
                 
                 PaymentPlan[i] = String.Format(
                     "{0},{1},{2},{3},{4},{5},{6}"
                     ,i+1,taksit,anapara,faizTutarı,kkdf,bsmv,amount);
                 //ödenecek ay,ödenecek toplam taksit,anapara tutarı,faiz tutarı,kkdf tutarı,bsmv tutarı,kalan toplam ödeme
             }
-
             return PaymentPlan;
         }
         public void PayLaonDebt(int loanId, double amountToPay)
         {
-            //loanı bulup ilk ödemeyi diziden silmek daha sonra borcu güncelleyi geri dönöek
+            //loanı bulup ilk ödemeyi diziden silmek daha sonra borcu güncelleyi geri dönöcek
             Loan LoanToPay = _loanRepository.GetById(loanId);
             //sql tablosunda değişiklikler yapıldıktan sonra yazılacaktır 
             //react tasarım ile devam edecek kod yazımı
-
-           
         }
         public void TakeLoan(long tcNo, double amount, int LoanTerm, string LoanType)
         {//loan validate,mhizden onay beklenmesi

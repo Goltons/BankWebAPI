@@ -49,7 +49,7 @@ namespace BankWebAPI.Repository.CustomerRepository
 
         public Customer login(string tcNo, string password)
         {
-            Customer customerToLogin = _context.Customers.FirstOrDefault(p => p.TcNo == tcNo && p.CustomerPassword == password);
+            Customer customerToLogin = _context.Customers.FirstOrDefault(p => p.TcNo == tcNo && p.Password == password);
             if (customerToLogin == null) return null;
             return customerToLogin;
         }

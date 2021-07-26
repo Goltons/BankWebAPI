@@ -9,8 +9,10 @@ interest rate tablosu banka çalışanları ve müşteri hizmetleri için
 transactionları dosyaya yazma loglama
 accnum ve iban için algoritma yazılması 
 rabbitmq,websocket,redis,log ekstra:elastic docker kullanımı
-bayramdan sonraya kadar react ile işin bitmesi gerekli
+sessionstorage da tc ile veri çekilip halledilmesi işlemlerinin halledilmesi id gibi kullanılması 
 staj 6.gün servis kodlarının yazılması ve api için controller sınıflarının oluşturulup kodlarının yazılması 
-staj 7.gün react kullanarak  kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması 
+staj 7.gün react kullanarak  kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması componentlerin oluşturulması 
 staj 8.gün giriş sayfa tasarımı oluşturulması ve giriş için gerekli method ve fonksiyonların olıuşturulup api ile veritabanından veri alıp doğrulayıp bunları tekrar dönen ve kullanıcı girişini sağlayan methodların oluşturulup yazılması ve react ile tasarımının yapılıp kullanıcı girişinin sağlanması 
 staj 9.gün kredi çekme ödeme metodlarının yazılması  ve bunun arayüz tasarımının yapılması react ile api ile ödeme planı alınması ve ödeme yapılması sağlanmıştır.
+staj 10.gün giriş kayıt react üzerindeki hataların giderilmesi tasarımın daha düzgün bir hale getirilmesi c# tarafında düzeltmeler yapılması veritabanında tablolara ek sutünlar eklenmesi bunların test edilmesi Controller classlarının oluşturulması
+
