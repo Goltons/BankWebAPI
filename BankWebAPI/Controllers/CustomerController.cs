@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Controllers
 {
-    [Route("/api/müşteri")]
-    public class LoginController:Controller
+    [Route("/api/user")]
+    public class CustomerController:Controller
     {
         private readonly ICustomerService _customerService;
         private readonly ILoanService _loanService;
-        public LoginController(ICustomerService customerService, ILoanService loanService)
+        public CustomerController(ICustomerService customerService, ILoanService loanService)
         {
             _customerService = customerService;
             _loanService = loanService;

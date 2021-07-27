@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 namespace BankWebAPI.Controllers
 {
     [Authorize]
+    [AllowAnonymous]
     [Route("/api/auth")]
     public class AuthController:Controller
     {
@@ -23,16 +24,14 @@ namespace BankWebAPI.Controllers
         {
             return _customerService.Login(tcNo, Password);
         }
-        [AllowAnonymous]
         [HttpPost]
-        public IActionResult Authenticate([FromBody]Customer customer)
+        public  IActionResult Authenticate([FromBody]Customer customer)
         {
             var user = _customerService.Authenticate(customer.TcNo, customer.Password);
             if (user == null)
                 return BadRequest(new { message = "Kullanici veya şifre hatalı!" });
             return Ok(user);
         }
-        [AllowAnonymous]
         [HttpPost]
         [Route("register")]
         public void Register([FromForm] Customer customer)

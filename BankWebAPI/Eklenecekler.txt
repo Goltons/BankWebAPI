@@ -13,6 +13,7 @@ sessionstorage da tc ile veri çekilip halledilmesi işlemlerinin halledilmesi i
 staj 6.gün servis kodlarının yazılması ve api için controller sınıflarının oluşturulup kodlarının yazılması 
 staj 7.gün react kullanarak  kayıt sayfa tasarımlarının oluşturulması ve backend e veri gönderme ve alma kodlarının yazılması componentlerin oluşturulması 
 staj 8.gün giriş sayfa tasarımı oluşturulması ve giriş için gerekli method ve fonksiyonların olıuşturulup api ile veritabanından veri alıp doğrulayıp bunları tekrar dönen ve kullanıcı girişini sağlayan methodların oluşturulup yazılması ve react ile tasarımının yapılıp kullanıcı girişinin sağlanması 
-staj 9.gün kredi çekme ödeme metodlarının yazılması  ve bunun arayüz tasarımının yapılması react ile api ile ödeme planı alınması ve ödeme yapılması sağlanmıştır.
-staj 10.gün giriş kayıt react üzerindeki hataların giderilmesi tasarımın daha düzgün bir hale getirilmesi c# tarafında düzeltmeler yapılması veritabanında tablolara ek sutünlar eklenmesi bunların test edilmesi Controller classlarının oluşturulması
-
+staj 9.gün c# tarafında kredi çekme ödeme metodlarının tarafında  yazılması   api ile ödeme planı alınması ve ödeme yapılmasını sağlayan kodların yazılması.
+staj 10.gün giriş kayıt react üzerindeki hataların giderilmesi tasarımın daha düzgün bir hale getirilmesi c# tarafında düzeltmeler yapılması veritabanında tablolara ek sutünlar eklenmesi bunların test edilmesi ek Controller classlarının oluşturulması ve bunların metodların yazılıp test edilmesi
+staj 11.gün profil bilgilerinin olduğu sayfayı oluşturma ve bu bilgileri backend api ile veritabanından alıp react üzerinde axios methodunu kullanarak objeyi çağırıp bu obje içindeki bilgilerle profil sayfasındaki bilgilerin doldurulması ve bu işlenmi yaparken kullanıcı giriş işlemini yaptığında kullanıcının tcnosunu session storage a kaydedip bu kayıtlı tcno ile gerekli işlemleri yapmak tcno yu id gibi kullanmak ve gerekli işlemlerin yapılmasını sağlamak için bu yöntemi tercih ettim.
+hata düzeltmeleri react tarafında login ve register için ve bazı metodlarda ufak değişiklikler yapılması register componentdınki kodların refactor edilmesi
