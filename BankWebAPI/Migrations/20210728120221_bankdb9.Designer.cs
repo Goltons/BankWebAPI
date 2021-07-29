@@ -4,14 +4,16 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210728120221_bankdb9")]
+    partial class bankdb9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,23 +31,14 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("AccountBranchCode")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountCurrencyType")
-                        .HasColumnType("int");
-
                     b.Property<string>("AccountName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountSupplementNumber")
-                        .HasColumnType("int");
-
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
-
-                    b.Property<double>("Balance")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -53,13 +46,13 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("IBAN")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<double>("TotalDebt")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalDeposit")
                         .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedDate")
@@ -118,6 +111,10 @@ namespace BankWebAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("CVC2")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("CartCurrencyType")
                         .HasColumnType("int");
 
                     b.Property<double>("CartDebt")
@@ -126,14 +123,8 @@ namespace BankWebAPI.Migrations
                     b.Property<double>("CartDeposit")
                         .HasColumnType("float");
 
-                    b.Property<double>("CartLimit")
-                        .HasColumnType("float");
-
-                    b.Property<string>("CartNumber")
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
                     b.Property<int>("CartPassword")
+                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<int>("CartType")
@@ -141,6 +132,9 @@ namespace BankWebAPI.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("IBAN")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");

@@ -21,7 +21,7 @@ namespace BankWebAPI.Controllers
         }
         [HttpPost("login")]
         public Customer Login([FromForm] string tcNo, string Password)
-        {
+        {   
             return _customerService.Login(tcNo, Password);
         }
         [HttpPost]

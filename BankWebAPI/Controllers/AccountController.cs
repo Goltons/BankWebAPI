@@ -2,10 +2,6 @@
 using BankWebAPI.Model.Customer;
 using BankWebAPI.Service.CustomerServices.AccountService;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankWebAPI.Controllers
 {
@@ -18,16 +14,19 @@ namespace BankWebAPI.Controllers
             _accountService = accountService;
         }
         [HttpPost("save")]
-        public string save([FromBody] Account account)
+        public string save([FromForm] Account account)
         {
             _accountService.AddAccount(account);
             return "hesap eklendi";
         }
-        [HttpGet("/{tcNo}")]
-        public string getAccounts(string tcNo)
-        {
 
-            return "hesaplar getirildi";
+        [HttpGet]
+        [Route("{tcno}")]
+        public Account[] getAccounts(string tcno)
+        {
+            
+            return _accountService.Accounts(tcno);
+            
         }
 
     }

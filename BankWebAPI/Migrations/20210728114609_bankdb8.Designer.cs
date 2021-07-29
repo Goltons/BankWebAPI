@@ -4,14 +4,16 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210728114609_bankdb8")]
+    partial class bankdb8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,37 +31,28 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("AccountBranchCode")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountCurrencyType")
-                        .HasColumnType("int");
-
                     b.Property<string>("AccountName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AccountSupplementNumber")
-                        .HasColumnType("int");
-
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
-
-                    b.Property<double>("Balance")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
-
-                    b.Property<string>("IBAN")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<double>("TotalDebt")
+                        .HasColumnType("float");
+
+                    b.Property<double>("TotalDeposit")
                         .HasColumnType("float");
 
                     b.Property<DateTime>("UpdatedDate")
@@ -91,7 +84,7 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsApproved")
@@ -114,10 +107,14 @@ namespace BankWebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccountId")
+                    b.Property<int?>("AccountId")
                         .HasColumnType("int");
 
                     b.Property<int>("CVC2")
+                        .HasMaxLength(3)
+                        .HasColumnType("int");
+
+                    b.Property<int>("CartCurrencyType")
                         .HasColumnType("int");
 
                     b.Property<double>("CartDebt")
@@ -126,14 +123,8 @@ namespace BankWebAPI.Migrations
                     b.Property<double>("CartDeposit")
                         .HasColumnType("float");
 
-                    b.Property<double>("CartLimit")
-                        .HasColumnType("float");
-
-                    b.Property<string>("CartNumber")
-                        .HasMaxLength(16)
-                        .HasColumnType("nvarchar(16)");
-
                     b.Property<int>("CartPassword")
+                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<int>("CartType")
@@ -141,6 +132,9 @@ namespace BankWebAPI.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("IBAN")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -224,7 +218,7 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<double>("InterestRate")
@@ -265,7 +259,7 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsApproved")
@@ -297,9 +291,7 @@ namespace BankWebAPI.Migrations
                 {
                     b.HasOne("BankWebAPI.Model.Customer.Customer", "Customer")
                         .WithMany("Accounts")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -308,9 +300,7 @@ namespace BankWebAPI.Migrations
                 {
                     b.HasOne("BankWebAPI.Model.Customer.Customer", "Customer")
                         .WithMany("Bills")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -319,9 +309,7 @@ namespace BankWebAPI.Migrations
                 {
                     b.HasOne("BankWebAPI.Model.Customer.Account", "Account")
                         .WithMany("Carts")
-                        .HasForeignKey("AccountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AccountId");
 
                     b.Navigation("Account");
                 });
@@ -330,9 +318,7 @@ namespace BankWebAPI.Migrations
                 {
                     b.HasOne("BankWebAPI.Model.Customer.Customer", "Customer")
                         .WithMany("Loans")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });
@@ -341,9 +327,7 @@ namespace BankWebAPI.Migrations
                 {
                     b.HasOne("BankWebAPI.Model.Customer.Customer", "Customer")
                         .WithMany("Transactions")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CustomerId");
 
                     b.Navigation("Customer");
                 });

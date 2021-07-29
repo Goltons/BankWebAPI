@@ -14,7 +14,8 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         void IncreaseCartLimit(int id, double amount);
         void DecreaseCartLimit(int id, double amaunt);
         void PayCartDebt(int id, double amountToPay);
-        string IBANGenerate();
-       
+        void AddFirstCart(int accountId);
+        //  string IBANGenerate();
+
     }
 }

@@ -16,14 +16,6 @@ namespace BankWebAPI.Repository.CustomerRepository
         {
             _context = context;
         }
-        public Customer CustomerGetById(int id)
-        {
-            Customer customer = _context.Customers.FirstOrDefault(p =>
-             p.CustomerId == id);
-            if (customer == null) throw new ArgumentNullException();
-            return customer;
-        }
-
         public void delete(Customer entity)
         {
             throw new NotImplementedException();
@@ -36,7 +28,7 @@ namespace BankWebAPI.Repository.CustomerRepository
 
         public Customer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Customers.FirstOrDefault(p => p.CustomerId == id);
         }
 
         public Customer GetByTcNo(string tcNo)

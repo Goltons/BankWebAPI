@@ -1,4 +1,5 @@
 ﻿
+using BankWebAPI.Model;
 using BankWebAPI.Model.Customer;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,5 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
 {
     public interface ICartRepository : IBaseRepository<Cart>
     {
-        
     }
 }

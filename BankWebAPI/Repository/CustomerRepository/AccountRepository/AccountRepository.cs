@@ -1,9 +1,7 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
 {
@@ -47,6 +45,35 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         {
             return _context.Accounts.FirstOrDefault(
                 p => p.AccountNumber == AccountNumber);
+        }
+
+        public Account[] getAllAccountsByTcNo(string tcno)
+        {
+            Customer customer = _context.Customers.FirstOrDefault(p => p.TcNo == tcno);
+            return _context.Accounts.Where(p => p.CustomerId == customer.CustomerId).ToArray();
+        }
+
+        public bool checkAccount(int customerId)
+        {
+            if (_context.Accounts.FirstOrDefault(p => p.CustomerId == customerId) != null) return true;
+            return false;
+        }
+
+        public int AccountSupplementNumber(int accNum)
+        {
+            List<Account> accounts = getAllByAccountNumber(accNum);
+            Account account = accounts.Last();
+            return account.AccountSupplementNumber;
+        }
+
+        public Account getByCustomerId(int customerId)
+        {
+            return _context.Accounts.FirstOrDefault(p => p.CustomerId == customerId);
+        }
+
+        public List<Account> getAllByAccountNumber(int accNumber)
+        {
+            return _context.Accounts.Where(p => p.AccountNumber == accNumber).ToList();
         }
     }
 }

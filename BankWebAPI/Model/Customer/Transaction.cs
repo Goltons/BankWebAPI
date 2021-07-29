@@ -18,6 +18,7 @@ namespace BankWebAPI.Model.Customer
         public string SenderIBAN { get; set; }
         public string ReceiverIBAN { get; set; }
         public bool IsApproved { get; set; }
+        public int CustomerId { get; set; }
         public Customer Customer { get; set; }
     }
 }

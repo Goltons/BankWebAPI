@@ -36,21 +36,29 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             _cartRepository.delete(_cartRepository.GetById(id));
         }
 
-        public string IBANGenerate()
+        public string CartNumberGenerate()
         {
             Random rnd = new Random();
-            string iban = "";
+            string cartNumber = "";
             for (int i = 0; i < 16; i++)
             {
                 int a = rnd.Next(0, 10);
-                if (a == 0 && i == 0) iban += rnd.Next(1, 10).ToString();
-                iban += a.ToString();
-                
+                if (a == 0 && i == 0) cartNumber += rnd.Next(1, 10).ToString();
+                cartNumber += a.ToString();
+
             }
-            return iban;
+            return cartNumber;
         }
-
-
+        public int CartPasswordGenerate()
+        {
+            Random rnd = new Random();
+            return rnd.Next(1000, 9999);
+        }
+        public int CVC2Generate()
+        {
+            Random rnd = new Random();
+            return rnd.Next(100, 999);
+        }
         public void IncreaseCartLimit(int id, double amount)
         {
             Cart cart = _cartRepository.GetById(id);
@@ -64,5 +72,17 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             _cartRepository.update(cart);
         }
 
+        public void AddFirstCart(int accountId)
+        {
+            Cart cartToAdd = new Cart();
+            cartToAdd.CartPassword = CartPasswordGenerate();
+            cartToAdd.CartNumber = CartNumberGenerate();
+            cartToAdd.CVC2 = CVC2Generate();
+            cartToAdd.CreatedDate = DateTime.Now;
+            cartToAdd.LastDate = cartToAdd.CreatedDate.AddYears(4);
+            cartToAdd.AccountId = accountId;
+            cartToAdd.CartType = Model.Enums.CartType.DEBIT;
+
+        }
     }
 }

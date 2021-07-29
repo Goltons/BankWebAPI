@@ -15,7 +15,6 @@ namespace BankWebAPI.Model.Customer
         [Key]
         public int CustomerId { get; set; }
         [StringLength(11,ErrorMessage ="11 basamak olmalı.")]
-        [Required]
         public string TcNo { get; set; }
         [Required]
         public string CustomerName { get; set; }
@@ -26,7 +25,6 @@ namespace BankWebAPI.Model.Customer
         public string MotherName { get; set; }
         [Required]
         public string FatherName { get; set; }
-        [Required]
         public string Adress { get; set; }
         [Required]
         [MaxLength(11,ErrorMessage ="11 basamak olmalı.")]

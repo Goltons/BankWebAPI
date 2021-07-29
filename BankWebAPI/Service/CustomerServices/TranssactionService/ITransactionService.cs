@@ -7,7 +7,7 @@ namespace BankWebAPI.Service.CustomerServices.TranssactionService
 {
     interface ITransactionService
     {
-        void SendToIBAN(string senderIBAN, string receiverIBAN, double amount);
+       // void SendToIBAN(string senderIBAN, string receiverIBAN, double amount);
 
     }
 }

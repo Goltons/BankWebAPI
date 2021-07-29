@@ -12,7 +12,7 @@ namespace BankWebAPI.Model
         {
             CHECKING,
             DEPOSIT
-        }
+        }   
         public enum BillType
         {
             ELECTRICITY,
@@ -21,7 +21,7 @@ namespace BankWebAPI.Model
             PHONE,
             INTERNET
         }
-        public enum CartCurrencyType
+        public enum AccountCurrencyType
         {
             TRY,
             USD,

@@ -1,4 +1,5 @@
-﻿using BankWebAPI.Model.Customer;
+﻿using BankWebAPI.Model;
+using BankWebAPI.Model.Customer;
 using BankWebAPI.Model.Customer.EFDbContext;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
         {
             _context = context;
         }
+
 
         public void delete(Cart entity)
         {
