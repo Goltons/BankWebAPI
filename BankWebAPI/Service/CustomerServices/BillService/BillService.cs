@@ -12,13 +12,20 @@ namespace BankWebAPI.Service.CustomerServices.BillService
     public class BillService : IBillService
     {
         private readonly IBillRepository _billRepository;
-        public BillService(IBillRepository billRepository)
+        private readonly ICustomerRepository _customerReository;
+        public BillService(IBillRepository billRepository, ICustomerRepository customerReository)
         {
             _billRepository = billRepository;
+            _customerReository = customerReository;
         }
         public Bill GetBillByBillNumber(string BillNumber)
         {
             return _billRepository.getBillByBillNumber(BillNumber);
+        }
+
+        public Bill[] GetBillsByTcNo(string tcno)
+        {
+            return _billRepository.GetBillsByTcNo(tcno);
         }
 
         public List<Bill> GetPaidBills(string tcNo)
@@ -33,6 +40,14 @@ namespace BankWebAPI.Service.CustomerServices.BillService
             bill.IsApproved = true;
             _billRepository.update(bill);
             return bill;
+        }
+
+        public void save(Bill bill)
+        {
+            
+            bill.CreatedDate = DateTime.Now;
+            bill.Customer = _customerReository.GetById(bill.CustomerId);
+            _billRepository.save(bill);
         }
     }
 }

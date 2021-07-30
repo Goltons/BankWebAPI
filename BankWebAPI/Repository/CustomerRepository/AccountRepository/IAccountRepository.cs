@@ -12,5 +12,6 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         Account getByCustomerId(int customerId);
         int AccountSupplementNumber(int accNumber);
         List<Account> getAllByAccountNumber(int accNumber);
+
     }
 }

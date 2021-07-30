@@ -22,7 +22,7 @@ namespace BankWebAPI.Model.Customer
         public bool IsActive { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
-        public List<Cart> Carts { get; set; }
+        public List<Card> Cards { get; set; }
         public AccountCurrencyType AccountCurrencyType { get; set; }
         public AccountType AccountType { get; set; }
     }

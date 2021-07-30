@@ -29,6 +29,7 @@ namespace BankWebAPI.Model.Customer
         [Required]
         [MaxLength(11,ErrorMessage ="11 basamak olmalı.")]
         public string PhoneNumber { get; set; }
+        public DateTime BirthDate { get; set; }
         public bool IsEnable { get; set; }
         public List<Account> Accounts { get; set; }
         public List<Loan> Loans { get; set; }

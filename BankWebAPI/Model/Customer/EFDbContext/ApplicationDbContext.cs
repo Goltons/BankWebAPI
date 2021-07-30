@@ -12,7 +12,7 @@ namespace BankWebAPI.Model.Customer.EFDbContext
     {
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }

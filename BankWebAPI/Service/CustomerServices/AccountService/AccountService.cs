@@ -73,5 +73,14 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
             return _accountRepository.checkAccount(customerId);
         }
 
+        public Account getByCustomerId(int customerId)
+        {
+            return _accountRepository.getByCustomerId(customerId);
+        }
+
+        public Account getMainAccount(int AccountNumber)
+        {
+            return _accountRepository.getByAccountNumber(AccountNumber);
+        }
     }
 }

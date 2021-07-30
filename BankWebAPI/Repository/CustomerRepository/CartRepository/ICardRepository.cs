@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.CartRepository
 {
-    public interface ICartRepository : IBaseRepository<Cart>
+    public interface ICardRepository : IBaseRepository<Card>
     {
     }
 }

@@ -28,6 +28,13 @@ namespace BankWebAPI.Controllers
             return _accountService.Accounts(tcno);
             
         }
+        [HttpGet]
+        [Route("mainacc/{customerId}")]
+        public Account getMainAccount(int customerId)
+        {
+            return _accountService.getByCustomerId(customerId);
+        }
+
 
     }
 }

@@ -7,36 +7,40 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.CartService
 {
-    public class CartService : ICartService
+    public class CardService : ICardService
     {
-        private readonly ICartRepository _cartRepository;
-        public CartService(ICartRepository cartRepository)
+        private readonly ICardRepository _cardRepository;
+        public CardService(ICardRepository cardRepository)
         {
-            _cartRepository = cartRepository;
+            _cardRepository = cardRepository;
         }
-        public void AddNewCartToAcc(Cart cart)
+        public void AddNewCartToAcc(Card card)
         {
-            _cartRepository.save(cart);
+            card.CreatedDate = DateTime.Now;
+            card.CVC2 = CVC2Generate();
+            card.CardNumber = CardNumberGenerate();
+            card.LastDate = card.CreatedDate.AddYears(4);
+            _cardRepository.save(card);
 
         }
         public void CloseCartLimit(int id)
         {
-            Cart cart = _cartRepository.GetById(id);
-            cart.CartLimit = 0;
-            _cartRepository.update(cart);
+            Card cart = _cardRepository.GetById(id);
+            cart.CardLimit = 0;
+            _cardRepository.update(cart);
         }
         public void DecreaseCartLimit(int id, double amaunt)
         {
-            Cart cart = _cartRepository.GetById(id);
-            cart.CartLimit -= 100;
-            _cartRepository.update(cart);
+            Card cart = _cardRepository.GetById(id);
+            cart.CardLimit -= 100;
+            _cardRepository.update(cart);
         }
         public void DeleteCartFromAccount(int id)
         {
-            _cartRepository.delete(_cartRepository.GetById(id));
+            _cardRepository.delete(_cardRepository.GetById(id));
         }
 
-        public string CartNumberGenerate()
+        public string CardNumberGenerate()
         {
             Random rnd = new Random();
             string cartNumber = "";
@@ -61,28 +65,35 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         }
         public void IncreaseCartLimit(int id, double amount)
         {
-            Cart cart = _cartRepository.GetById(id);
-            cart.CartLimit += 100;
-            _cartRepository.update(cart);
+            Card cart = _cardRepository.GetById(id);
+            cart.CardLimit += 100;
+            _cardRepository.update(cart);
         }
         public void PayCartDebt(int id, double amountToPay)
         {
-            Cart cart = _cartRepository.GetById(id);
-            cart.CartDebt-= amountToPay;
-            _cartRepository.update(cart);
+            Card cart = _cardRepository.GetById(id);
+            cart.CardDebt-= amountToPay;
+            _cardRepository.update(cart);
         }
 
         public void AddFirstCart(int accountId)
         {
-            Cart cartToAdd = new Cart();
-            cartToAdd.CartPassword = CartPasswordGenerate();
-            cartToAdd.CartNumber = CartNumberGenerate();
+            Card cartToAdd = new Card();
+            //cartToAdd.CardPassword = CartPasswordGenerate();
+            cartToAdd.CardNumber = CardNumberGenerate();
             cartToAdd.CVC2 = CVC2Generate();
             cartToAdd.CreatedDate = DateTime.Now;
             cartToAdd.LastDate = cartToAdd.CreatedDate.AddYears(4);
             cartToAdd.AccountId = accountId;
-            cartToAdd.CartType = Model.Enums.CartType.DEBIT;
+            cartToAdd.CardType = Model.Enums.CardType.DEBIT;
 
+        }
+        //kredi kartlarında ödenmesi gereken gecikme faizi hesaplama
+        //asgari ödeme
+        //limit artış onayı 
+        public void CardAppealService(Card card)
+        {
+            _cardRepository.save(card);
         }
     }
 }

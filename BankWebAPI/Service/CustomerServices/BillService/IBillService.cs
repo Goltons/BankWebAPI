@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.BillService
 {
-    interface IBillService
+    public interface IBillService
     {
         Bill PayBillFee(string BillNumber);
         Bill GetBillByBillNumber(string BillNumber);
         List<Bill> GetPaidBills(string tcNo);
+        Bill[] GetBillsByTcNo(string tcno);
+        void save(Bill bill);
     }
 }

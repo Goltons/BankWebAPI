@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Service.CustomerServices.CartService
 {
-    public interface ICartService
+    public interface ICardService
     {
-        void AddNewCartToAcc(Cart cart);
+        void AddNewCartToAcc(Card cart);
         void DeleteCartFromAccount(int id);
         void CloseCartLimit(int id);
         void IncreaseCartLimit(int id, double amount);
         void DecreaseCartLimit(int id, double amaunt);
         void PayCartDebt(int id, double amountToPay);
         void AddFirstCart(int accountId);
+        void CardAppealService(Card card);
         //  string IBANGenerate();
 
     }

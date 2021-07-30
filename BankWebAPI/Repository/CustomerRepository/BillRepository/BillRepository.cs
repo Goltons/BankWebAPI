@@ -31,6 +31,12 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
             return _context.Bills.FirstOrDefault(p => p.BillNumber == billNo);
         }
 
+        public Bill[] GetBillsByTcNo(string tcno)
+        {
+            Customer customer = _customerRepository.GetByTcNo(tcno);
+            return _context.Bills.Where(p => p.CustomerId == customer.CustomerId).ToArray() ;
+        }
+
         public Bill GetById(int id)
         {
             throw new NotImplementedException();
@@ -46,7 +52,8 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 
         public void save(Bill entity)
         {
-            throw new NotImplementedException();
+            _context.Bills.Add(entity);
+            _context.SaveChanges();
         }
 
         public void update(Bill entity)

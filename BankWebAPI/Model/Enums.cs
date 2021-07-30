@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BankWebAPI.Model
+﻿namespace BankWebAPI.Model
 {
     public class Enums
     {
-        
+
         public enum AccountType
         {
             CHECKING,
             DEPOSIT
-        }   
+        }
         public enum BillType
         {
             ELECTRICITY,
@@ -27,7 +22,7 @@ namespace BankWebAPI.Model
             USD,
             EUR
         }
-        public enum CartType
+        public enum CardType
         {
             DEBIT,
             CREDIT

@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +10,6 @@ namespace BankWebAPI.Model.Customer
     {
         public Bill()
         {
-
         }
         public int BillId { get; set; }
         public string BillNumber { get; set; }

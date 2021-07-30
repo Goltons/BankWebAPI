@@ -8,39 +8,39 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.CartRepository
 {
-    public class CartRepository : ICartRepository
+    public class CardRepository : ICardRepository
     {
         private readonly ApplicationDbContext _context;
-        public CartRepository(ApplicationDbContext context)
+        public CardRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
 
-        public void delete(Cart entity)
+        public void delete(Card entity)
         {
            
-            _context.Carts.Remove(entity);
+            _context.Cards.Remove(entity);
             _context.SaveChanges();
         }
-        public List<Cart> getAll()
+        public List<Card> getAll()
         {
             throw new NotImplementedException();
         }
 
-        public Cart GetById(int id)
+        public Card GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Cards.FirstOrDefault(p => p.CardId == id);
         }
-        public void save(Cart entity)
+        public void save(Card entity)
         {
-            _context.Carts.Add(entity);
+            _context.Cards.Add(entity);
             _context.SaveChanges();
         }
 
-        public void update(Cart entity)
+        public void update(Card entity)
         {
-            _context.Carts.Update(entity);
+            _context.Cards.Update(entity);
             _context.SaveChanges();
         }
     }

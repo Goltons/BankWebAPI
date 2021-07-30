@@ -10,5 +10,6 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
     {
         Bill getBillByBillNumber(string billNo);
         List<Bill> GetPaidBillsByTcNo(string tcNo);
+        Bill[] GetBillsByTcNo(string tcno);
     }
 }
