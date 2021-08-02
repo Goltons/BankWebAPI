@@ -24,7 +24,18 @@ namespace BankWebAPI.Controllers
             _billservice.save(bill);
             return "fatura kayıt edildi.";
         }
-
+        [HttpGet]
+        [Route("getbill/{BillNumber}")]
+        public Bill getBillByBillNumber(string BillNumber)
+        {
+            return _billservice.GetBillByBillNumber(BillNumber);
+        }
+        [HttpPost("{CardId}/{billNumber}")]
+        public string PayBillFromCard(int CardId, string billNumber)
+        {
+            _billservice.PayBillFee(CardId, billNumber);
+            return "";
+        }
 
         //ödenmiş faturaları
 

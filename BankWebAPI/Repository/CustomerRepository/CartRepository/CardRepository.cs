@@ -15,8 +15,6 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
         {
             _context = context;
         }
-
-
         public void delete(Card entity)
         {
            
@@ -28,16 +26,24 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
             throw new NotImplementedException();
         }
 
+        public Card GetByAccountId(int accountId)
+        {
+            return _context.Cards.FirstOrDefault(p => p.AccountId == accountId);
+        }
+
         public Card GetById(int id)
         {
             return _context.Cards.FirstOrDefault(p => p.CardId == id);
+        }
+        public Card[] GetCardsByAccountId(int accountId)
+        {
+            return _context.Cards.Where(p => p.AccountId == accountId).ToArray();
         }
         public void save(Card entity)
         {
             _context.Cards.Add(entity);
             _context.SaveChanges();
         }
-
         public void update(Card entity)
         {
             _context.Cards.Update(entity);

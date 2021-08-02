@@ -1,4 +1,5 @@
 ﻿
+using BankWebAPI.Model.Customer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,8 @@ namespace BankWebAPI.Service.CustomerServices.LoanService
 {
     public interface ILoanService
     {
-        void TakeLoan(long tcNo, double amount, int LoanTerm, string LoanType);
+        void LoanApply(Loan loan);
         void PayLaonDebt(int loanId, double amountToPay);
-
-        string[] GetPaymentPlan(int LoanTerm, double amount, string LoanType, double interestRate);
+        string[] GetPaymentPlan(int LoanTerm, double amount, double interestRate);
     }
 }

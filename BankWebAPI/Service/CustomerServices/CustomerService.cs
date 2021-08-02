@@ -19,11 +19,10 @@ namespace BankWebAPI.Service.CustomerServices
             _customerRepository = customerRepository;
             _appSettings = appSettings.Value;
         }
-
         public Customer Authenticate(string tcNo, string customerPassword)
         {
-            var user = _customerRepository.login(tcNo, customerPassword);
-            if (user == null)
+            var customer = _customerRepository.login(tcNo, customerPassword);
+            if (customer == null)
                 return null;
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -31,18 +30,17 @@ namespace BankWebAPI.Service.CustomerServices
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.TcNo)
+                    new Claim(ClaimTypes.Name, customer.TcNo)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            user.Token = tokenHandler.WriteToken(token);
-
+            customer.Token = tokenHandler.WriteToken(token);
             // Sifre null olarak gonderilir.
-            user.Password = null;
+            customer.Password = null;
 
-            return user;
+            return customer;
         }
 
         public Customer GetByTcNo(string tcNo)

@@ -8,7 +8,7 @@ namespace BankWebAPI.Service.CustomerServices.BillService
 {
     public interface IBillService
     {
-        Bill PayBillFee(string BillNumber);
+        Bill PayBillFee(int cardId, string BillNumber);
         Bill GetBillByBillNumber(string BillNumber);
         List<Bill> GetPaidBills(string tcNo);
         Bill[] GetBillsByTcNo(string tcno);

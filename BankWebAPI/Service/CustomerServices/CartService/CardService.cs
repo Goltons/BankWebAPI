@@ -1,4 +1,5 @@
 ﻿using BankWebAPI.Model.Customer;
+using BankWebAPI.Repository.CustomerRepository.AccountRepository;
 using BankWebAPI.Repository.CustomerRepository.CartRepository;
 using System;
 using System.Collections.Generic;
@@ -10,9 +11,11 @@ namespace BankWebAPI.Service.CustomerServices.CartService
     public class CardService : ICardService
     {
         private readonly ICardRepository _cardRepository;
-        public CardService(ICardRepository cardRepository)
+        private readonly IAccountRepository _accountRepository;
+        public CardService(ICardRepository cardRepository, IAccountRepository accountRepository)
         {
             _cardRepository = cardRepository;
+            _accountRepository = accountRepository;
         }
         public void AddNewCartToAcc(Card card)
         {
@@ -21,7 +24,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             card.CardNumber = CardNumberGenerate();
             card.LastDate = card.CreatedDate.AddYears(4);
             _cardRepository.save(card);
-
         }
         public void CloseCartLimit(int id)
         {
@@ -39,7 +41,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         {
             _cardRepository.delete(_cardRepository.GetById(id));
         }
-
         public string CardNumberGenerate()
         {
             Random rnd = new Random();
@@ -49,7 +50,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
                 int a = rnd.Next(0, 10);
                 if (a == 0 && i == 0) cartNumber += rnd.Next(1, 10).ToString();
                 cartNumber += a.ToString();
-
             }
             return cartNumber;
         }
@@ -75,7 +75,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             cart.CardDebt-= amountToPay;
             _cardRepository.update(cart);
         }
-
         public void AddFirstCart(int accountId)
         {
             Card cartToAdd = new Card();
@@ -86,7 +85,6 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             cartToAdd.LastDate = cartToAdd.CreatedDate.AddYears(4);
             cartToAdd.AccountId = accountId;
             cartToAdd.CardType = Model.Enums.CardType.DEBIT;
-
         }
         //kredi kartlarında ödenmesi gereken gecikme faizi hesaplama
         //asgari ödeme
@@ -94,6 +92,17 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         public void CardAppealService(Card card)
         {
             _cardRepository.save(card);
+        }
+        public List<Card> getAllByTcNo(string tcno)
+        {
+            Account[] accounts = _accountRepository.getAllAccountsByTcNo(tcno);
+            List<Card> cards = new List<Card>();
+            foreach (var item in accounts)
+            {
+                Card card = _cardRepository.GetByAccountId(item.AccountId);
+                if (card != null) cards.Add(card);
+            }
+            return cards;
         }
     }
 }

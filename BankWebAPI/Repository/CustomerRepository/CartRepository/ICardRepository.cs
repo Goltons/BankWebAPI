@@ -10,5 +10,7 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
 {
     public interface ICardRepository : IBaseRepository<Card>
     {
+        Card[] GetCardsByAccountId(int accountId);
+        Card GetByAccountId(int accountId);
     }
 }

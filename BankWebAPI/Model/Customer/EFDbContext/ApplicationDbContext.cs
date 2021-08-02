@@ -33,10 +33,10 @@ Integrated Security=True;
 TrustServerCertificate=False;");
 
             }
-
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
         }
 

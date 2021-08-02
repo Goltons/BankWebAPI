@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using static BankWebAPI.Model.Enums;
@@ -13,6 +14,7 @@ namespace BankWebAPI.Model.Customer
         public Customer()
         {}
         [Key]
+        [DisallowNull]
         public int CustomerId { get; set; }
         [StringLength(11,ErrorMessage ="11 basamak olmalı.")]
         public string TcNo { get; set; }

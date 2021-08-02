@@ -2,6 +2,7 @@
 using BankWebAPI.Model.Customer.EFDbContext;
 using BankWebAPI.Repository.CustomerRepository;
 using BankWebAPI.Repository.CustomerRepository.BillRepository;
+using BankWebAPI.Repository.CustomerRepository.CartRepository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,12 @@ namespace BankWebAPI.Service.CustomerServices.BillService
     {
         private readonly IBillRepository _billRepository;
         private readonly ICustomerRepository _customerReository;
-        public BillService(IBillRepository billRepository, ICustomerRepository customerReository)
+        private readonly ICardRepository _cardRepository;
+        public BillService(IBillRepository billRepository, ICustomerRepository customerReository, ICardRepository cardRepository)
         {
             _billRepository = billRepository;
             _customerReository = customerReository;
+            _cardRepository = cardRepository;
         }
         public Bill GetBillByBillNumber(string BillNumber)
         {
@@ -33,12 +36,14 @@ namespace BankWebAPI.Service.CustomerServices.BillService
             return _billRepository.GetPaidBillsByTcNo(tcNo);
         }
 
-        public Bill PayBillFee(string BillNumber)
+        public Bill PayBillFee(int cardId,string BillNumber)
         {
             Bill bill = _billRepository.getBillByBillNumber(BillNumber);
-            bill.BillFee = 0;
+            Card cardToPay = _cardRepository.GetById(cardId);
+            cardToPay.CardBalance -= bill.BillFee;
             bill.IsApproved = true;
             _billRepository.update(bill);
+            _cardRepository.update(cardToPay);
             return bill;
         }
 

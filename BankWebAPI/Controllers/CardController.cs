@@ -2,6 +2,7 @@
 using BankWebAPI.Service.CustomerServices.CartService;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections.Generic;
 
 namespace BankWebAPI.Controllers
 {
@@ -10,7 +11,7 @@ namespace BankWebAPI.Controllers
     {
         private readonly ICardService _cardService;
         public CardController(ICardService cardService)
-        {
+            {
             _cardService = cardService;
         }
         [HttpPost]
@@ -19,6 +20,7 @@ namespace BankWebAPI.Controllers
             _cardService.AddNewCartToAcc(card);
             return "başarı ile eklendi";
         }
+       
         [HttpPost("CloseCardlimits/{id}")]
         public string CloseCardLimit(int id)
         {
@@ -31,7 +33,12 @@ namespace BankWebAPI.Controllers
             _cardService.PayCartDebt(id, amount);
             return String.Format("başarı ile {0} ödendi.", amount);
         }
-
+        [HttpGet("getCards/{tcno}")]
+        public List<Card> GetCards(string tcno)
+        {
+            return _cardService.getAllByTcNo(tcno);
+            //buna ek düzenleme refactor edilmesi gerekli kodlamanın
+        }
 
     }
 }

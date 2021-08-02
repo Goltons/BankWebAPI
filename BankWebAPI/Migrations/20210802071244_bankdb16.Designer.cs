@@ -4,14 +4,16 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210802071244_bankdb16")]
+    partial class bankdb16
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -142,6 +144,9 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CutOffDate")
                         .HasColumnType("datetime2");
 
@@ -157,6 +162,8 @@ namespace BankWebAPI.Migrations
                     b.HasKey("CardId");
 
                     b.HasIndex("AccountId");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Cards");
                 });
@@ -329,6 +336,12 @@ namespace BankWebAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("BankWebAPI.Model.Customer.Customer", null)
+                        .WithMany("Cards")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Account");
                 });
 
@@ -364,6 +377,8 @@ namespace BankWebAPI.Migrations
                     b.Navigation("Accounts");
 
                     b.Navigation("Bills");
+
+                    b.Navigation("Cards");
 
                     b.Navigation("Loans");
 

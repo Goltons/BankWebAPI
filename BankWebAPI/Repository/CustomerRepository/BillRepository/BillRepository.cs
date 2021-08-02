@@ -3,7 +3,6 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 {
@@ -30,11 +29,10 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
         {
             return _context.Bills.FirstOrDefault(p => p.BillNumber == billNo);
         }
-
         public Bill[] GetBillsByTcNo(string tcno)
         {
             Customer customer = _customerRepository.GetByTcNo(tcno);
-            return _context.Bills.Where(p => p.CustomerId == customer.CustomerId).ToArray() ;
+            return _context.Bills.Where(p => p.CustomerId == customer.CustomerId).ToArray();
         }
 
         public Bill GetById(int id)
@@ -58,7 +56,8 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 
         public void update(Bill entity)
         {
-            throw new NotImplementedException();
+            _context.Bills.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

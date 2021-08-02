@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
@@ -29,12 +30,14 @@ namespace BankWebAPI.Model.Customer
         public CardType CardType { get; set; }
 
         /*
-         *register için doğrulama js tarafında
-         * cm:card ve bill bitse
-         * bill için ödenecek kartın currency türü fatura ile aynı olmalı 
-         * cmt:transaction ve loan
-         * pz:bankaçalışanı ve mhiz
-         * pzt:tasarımları ve route
+         * pzt:bill ve loan
+         * sl:transaction ve transfer
+         * çrş:bankaçalışanı ve mhiz
+         * perş:tasarımları ve route
+         * cum:
+         * cmt:
+         * pz:
+         * pzt
           */
     }
 }

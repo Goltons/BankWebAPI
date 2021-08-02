@@ -27,11 +27,5 @@ namespace BankWebAPI.Controllers
             
             return _customerService.GetByTcNo(tcno);
         }
-        [HttpPost("{LoanTerm}/{amount}/{LoanType}/{interestRate}")]
-        public string[] faizHesap(int LoanTerm, double amount, string LoanType, double interestRate)
-        {
-          
-            return _loanService.GetPaymentPlan(LoanTerm, amount, LoanType, interestRate);
-        }
     }
 }

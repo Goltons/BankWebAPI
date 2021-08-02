@@ -16,7 +16,9 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         void PayCartDebt(int id, double amountToPay);
         void AddFirstCart(int accountId);
         void CardAppealService(Card card);
-        //  string IBANGenerate();
+
+        List<Card> getAllByTcNo(string tcno);
+        //string IBANGenerate();
 
     }
 }
