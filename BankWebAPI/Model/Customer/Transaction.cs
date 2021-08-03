@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -11,14 +12,11 @@ namespace BankWebAPI.Model.Customer
         {
 
         }
-        const double feePercent = 0.001;
         public int TransactionId { get; set; }
-        public double TransactionBalance { get; set; }
-        public double TransactionFee { get; set; }
-        public string SenderIBAN { get; set; }
-        public string ReceiverIBAN { get; set; }
+        public double TransactionAmount { get; set; } 
         public bool IsApproved { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public TransactionType TransactionType { get; set; }
     }
 }

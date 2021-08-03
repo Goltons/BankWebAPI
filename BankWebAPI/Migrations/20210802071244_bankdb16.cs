@@ -19,10 +19,6 @@ namespace BankWebAPI.Migrations
                 table: "Cards");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Cards_Customers_CustomerId",
-                table: "Cards");
-
-            migrationBuilder.DropForeignKey(
                 name: "FK_Loans_Customers_CustomerId",
                 table: "Loans");
 
@@ -54,13 +50,7 @@ namespace BankWebAPI.Migrations
                 principalColumn: "AccountId",
                 onDelete: ReferentialAction.Restrict);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Cards_Customers_CustomerId",
-                table: "Cards",
-                column: "CustomerId",
-                principalTable: "Customers",
-                principalColumn: "CustomerId",
-                onDelete: ReferentialAction.Restrict);
+          
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Loans_Customers_CustomerId",
@@ -93,9 +83,7 @@ namespace BankWebAPI.Migrations
                 name: "FK_Cards_Accounts_AccountId",
                 table: "Cards");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Cards_Customers_CustomerId",
-                table: "Cards");
+       
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Loans_Customers_CustomerId",
@@ -129,13 +117,7 @@ namespace BankWebAPI.Migrations
                 principalColumn: "AccountId",
                 onDelete: ReferentialAction.Cascade);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Cards_Customers_CustomerId",
-                table: "Cards",
-                column: "CustomerId",
-                principalTable: "Customers",
-                principalColumn: "CustomerId",
-                onDelete: ReferentialAction.Cascade);
+           
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Loans_Customers_CustomerId",

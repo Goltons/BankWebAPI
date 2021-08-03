@@ -11,13 +11,13 @@ namespace BankWebAPI.Controllers
     {
         private readonly ICardService _cardService;
         public CardController(ICardService cardService)
-            {
+        {
             _cardService = cardService;
         }
-        [HttpPost]
-        public string save([FromBody] Card card)
+        [HttpPost("save")]
+        public string save([FromForm] Card card)
         {
-            _cardService.AddNewCartToAcc(card);
+            _cardService.CardAppealService(card);
             return "başarı ile eklendi";
         }
        
@@ -29,14 +29,14 @@ namespace BankWebAPI.Controllers
         }
         [HttpPost("/{id}/{amount}")]
         public string PayCardDebt(int id, double amount)
-        {
+        {   
             _cardService.PayCartDebt(id, amount);
             return String.Format("başarı ile {0} ödendi.", amount);
         }
         [HttpGet("getCards/{tcno}")]
-        public List<Card> GetCards(string tcno)
+        public Card[] GetCards(string tcno)
         {
-            return _cardService.getAllByTcNo(tcno);
+            return _cardService.getAllByTcNo(tcno).ToArray();
             //buna ek düzenleme refactor edilmesi gerekli kodlamanın
         }
 

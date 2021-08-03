@@ -17,9 +17,11 @@ staj 12.gün react tarafında kullanıcıya ait profil bilgilerinin içerdiği s
 staj 13.gün hesap açma sayfasının tasarımın react tarafında yapılması ve kullanıcıya ait hesapların tablo halinde getirildiği component in oluşturulması ve bu component e gelecek veriler için c# tarafında gerekli kodların yazılması ve test edilmesi işlemleri yapılmıştır.ek olarak cart ve account tablolarında bazı değişkenlerin modellemedeik yeri ve veritabanında bazı sutunlar değiştirilmiştir.account controllerı oluşturulmuştur düzenli bir biçimde bütün get ve post işlemleri için
 staj 14.gün kart başvurusu yapma ve bu başvuru için gerekli sayfanın tasarım ve client side kodları yazılmıştır api tarafında c# ile kart başvurusu yaparken sistemin üretmesi gereken değişkenleri ve bu üretilen değişkenlerin doğru olup olmadığının kontrolünün yapılıp veritabanına  kaydedilmesini sağlayana methode ve işlemler yapılmıştır card controller ı oluşturul bu controller önce postman ile daha sonra tasarımını yaptıktan sonra react ile veri gönderilp bu verinin doğru bi şekilde kaydedildiği test edilmiştir
 staj 15.gün fatura ödeme componenti  ve kredi başvurusu yapma kredi ödeme planı componentleri yaptım.Fatura ödemesini seçilen kart üzerinden yapılan metodları yazdım.ödeme yapıldıktan sonra veritabanından kart ve fatura için güncellemeler yapacak şekilde kodlamaları yaptım.react de componentları oluşturdum ve bunlar için gerekli js html kodlarını yazdım.c# üzerinde gerekli metodları yazdım.
-staj 17.gün transaction işlemleri ve navbar tasarımı /*
-staj 18.gün miy banka çalışanı ve ilk için gerekli tasarımları yaptım./*
+staj 16.gün /*transfer işlemleri için gerekli olan nesneyi ve repository service sınıflarını oluşturdum gönderme seçeneğine gönderim yapacak metodları yazdım.React üzerinde 2 tane component dosyasını oluşturdum iban ve hesap numarası ile transfer yapabilecek kodlamayı yaptım gerekli tasarımları yaptım ve veritabanında transfer tablosu üzerinde transferleri kaydeden  repository ve servis dosyalarını olıuşturdum ve bu sınıfları test etmek için önce postman uygulaması ile daha sonra react ile component oluşturarak denedim.
+staj 17.gün miy banka çalışanı için gerekli metod ve sınıfları oluşturdum.navbar tasarımı
+staj 18.gün miy banko onay işlem componentini yaparız ve ilk için gerekli tasarımları yaptım./*
 staj 19.gün miy banka için tasarım/*
 staj 20.gün projenin test
 ek 2 gün var haftasonu hataları düzelt
-concurrency araştır using methodlara bak tekrardan bugün accoun ve kart için yazmadığım metodları yaz.
+profil update/kart detay update/şifre sıfırlama/route/kredi ödeme planı/kredi ödeme/miy class ve role based route
+bugün navbar account ve kartta düzenlemeler kredi ödeme yazma+cardupdate page+bootstrap /*miy banko sınıfları ve componentleri

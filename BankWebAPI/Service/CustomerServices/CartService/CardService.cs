@@ -91,17 +91,23 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         //limit artış onayı 
         public void CardAppealService(Card card)
         {
+            card.CardNumber = CardNumberGenerate();
+            card.CVC2 = CVC2Generate();
+            card.CreatedDate = DateTime.Now;
+            card.LastDate = card.CreatedDate.AddYears(4);
             _cardRepository.save(card);
         }
         public List<Card> getAllByTcNo(string tcno)
         {
             Account[] accounts = _accountRepository.getAllAccountsByTcNo(tcno);
             List<Card> cards = new List<Card>();
+
             foreach (var item in accounts)
             {
-                Card card = _cardRepository.GetByAccountId(item.AccountId);
-                if (card != null) cards.Add(card);
-            }
+                List<Card> cardsToAdd = new List<Card>();
+                cardsToAdd = _cardRepository.GetCardsByAccountId(item.AccountId).ToList();
+                if (cardsToAdd.Count>0)cards.AddRange(cardsToAdd);
+                           }
             return cards;
         }
     }

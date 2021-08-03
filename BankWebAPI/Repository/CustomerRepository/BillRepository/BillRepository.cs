@@ -27,6 +27,7 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
 
         public Bill getBillByBillNumber(string billNo)
         {
+            
             return _context.Bills.FirstOrDefault(p => p.BillNumber == billNo);
         }
         public Bill[] GetBillsByTcNo(string tcno)

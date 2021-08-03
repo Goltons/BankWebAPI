@@ -38,7 +38,11 @@
             CUSTOMER,
             CUSTOMER_MANAGER,
             BANK_WORKER
-
+        }
+        public enum TransactionType{
+            BILL,
+            LOAN,
+            TRANSFER
         }
     }
 }

@@ -4,14 +4,16 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210803064933_bankdb20")]
+    partial class bankdb20
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -300,12 +302,6 @@ namespace BankWebAPI.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BranchCode")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -321,16 +317,10 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ReceiverName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("SenderIBAN")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SenderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SupplementNumber")
                         .HasColumnType("int");
 
                     b.Property<double>("TransferAmount")
@@ -342,9 +332,6 @@ namespace BankWebAPI.Migrations
                     b.Property<string>("TransferMessage")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TransferType")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -352,7 +339,7 @@ namespace BankWebAPI.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Transfers");
+                    b.ToTable("Transfer");
                 });
 
             modelBuilder.Entity("BankWebAPI.Model.Customer.Account", b =>

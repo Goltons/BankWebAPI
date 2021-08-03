@@ -16,6 +16,7 @@ namespace BankWebAPI.Model.Customer.EFDbContext
         public virtual DbSet<Bill> Bills { get; set; }
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<Transfer> Transfers { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 

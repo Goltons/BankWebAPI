@@ -12,11 +12,10 @@ namespace BankWebAPI.Service.CustomerServices.CartService
         void DeleteCartFromAccount(int id);
         void CloseCartLimit(int id);
         void IncreaseCartLimit(int id, double amount);
-        void DecreaseCartLimit(int id, double amaunt);
+        void DecreaseCartLimit(int id, double amount);
         void PayCartDebt(int id, double amountToPay);
         void AddFirstCart(int accountId);
         void CardAppealService(Card card);
-
         List<Card> getAllByTcNo(string tcno);
         //string IBANGenerate();
 

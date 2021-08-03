@@ -75,5 +75,16 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         {
             return _context.Accounts.Where(p => p.AccountNumber == accNumber).ToList();
         }
+
+        public Account getAccountForTransfer(int branchCode, int accountNumber, int SupplementNumber, string receiverName)
+        {
+            return _context.Accounts.FirstOrDefault(p => p.AccountBranchCode == branchCode && p.AccountNumber == accountNumber && p.AccountSupplementNumber == SupplementNumber&&p.Customer.CustomerName==receiverName);
+
+        }
+
+        public Account getAccountForIBANTransfer(string iban, string receiverName)
+        {
+            return _context.Accounts.FirstOrDefault(p => p.IBAN == iban && p.Customer.CustomerName == receiverName);
+        }
     }
 }

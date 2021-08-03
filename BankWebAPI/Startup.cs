@@ -24,6 +24,8 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Logging;
+using BankWebAPI.Repository.CustomerRepository.TransferRepository;
+using BankWebAPI.Service.CustomerServices.TransferService;
 
 namespace BankWebAPI
 {
@@ -84,8 +86,10 @@ namespace BankWebAPI
             services.AddTransient<IBillRepository,BillRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddSingleton<ITransactionService, TransactionService>();
-            
-            
+            services.AddTransient<ITransferRepository, TransferRepository>();
+            services.AddSingleton<ITransferService, TransferService>();
+
+
             services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")),ServiceLifetime.Singleton);
         }

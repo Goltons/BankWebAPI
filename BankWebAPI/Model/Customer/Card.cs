@@ -30,8 +30,7 @@ namespace BankWebAPI.Model.Customer
         public CardType CardType { get; set; }
 
         /*
-         * pzt:bill ve loan
-         * sl:transaction ve transfer
+         * sl:transaction ve transfer history işlem durumu
          * çrş:bankaçalışanı ve mhiz
          * perş:tasarımları ve route
          * cum:
