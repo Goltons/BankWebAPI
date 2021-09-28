@@ -20,25 +20,27 @@ namespace BankWebAPI.Controllers
             _cardService.CardAppealService(card);
             return "başarı ile eklendi";
         }
-       
         [HttpPost("CloseCardlimits/{id}")]
         public string CloseCardLimit(int id)
         {
-            _cardService.CloseCartLimit(id);
+            _cardService.CloseCardLimit(id);
             return "başarı ile kapatıldı";
         }
         [HttpPost("/{id}/{amount}")]
         public string PayCardDebt(int id, double amount)
         {   
-            _cardService.PayCartDebt(id, amount);
+            _cardService.PayCardDebt(id, amount);
             return String.Format("başarı ile {0} ödendi.", amount);
         }
         [HttpGet("getCards/{tcno}")]
         public Card[] GetCards(string tcno)
         {
             return _cardService.getAllByTcNo(tcno).ToArray();
-            //buna ek düzenleme refactor edilmesi gerekli kodlamanın
         }
-
+        [HttpGet("getall")]
+        public Card[] getAllForApprove()
+        {
+            return _cardService.getAllForApprove();
+        }
     }
 }

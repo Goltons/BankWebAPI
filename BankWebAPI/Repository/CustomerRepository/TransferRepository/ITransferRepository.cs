@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Repository.CustomerRepository.TransferRepository
 {
-    public interface ITransferRepository:IBaseRepository<Transfer>
+    public interface ITransferRepository : IBaseRepository<Transfer>
     {
+        Transfer[] getAllforApprove();
     }
 }

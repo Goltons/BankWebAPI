@@ -26,19 +26,26 @@ namespace BankWebAPI.Repository.CustomerRepository.TransferRepository
             throw new NotImplementedException();
         }
 
+        public Transfer[] getAllforApprove()
+        {
+            return _context.Transfers.Where(p => p.IsApproved == false).ToArray();
+        }
+
         public Transfer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _context.Transfers.FirstOrDefault(p => p.TransferId == id);
         }
 
         public void save(Transfer entity)
         {
-            throw new NotImplementedException();
+            _context.Transfers.Add(entity);
+            _context.SaveChanges();
         }
 
         public void update(Transfer entity)
         {
-            throw new NotImplementedException();
+            _context.Transfers.Update(entity);
+            _context.SaveChanges();
         }
     }
 }

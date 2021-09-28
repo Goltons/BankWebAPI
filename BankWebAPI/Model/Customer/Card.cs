@@ -9,9 +9,7 @@ namespace BankWebAPI.Model.Customer
     {
         
         public Card()
-        {
-
-        }
+        {}
         [Key]
         public int CardId { get; set; }
         [Required]
@@ -24,9 +22,14 @@ namespace BankWebAPI.Model.Customer
         public int CVC2 { get; set; }
         public DateTime CutOffDate { get; set; }
         public bool IsActive { get; set; }
+        public string Status { get; set; }
+        public DateTime ApprovedDate { get; set; }
+        public string ApproverTcNo { get; set; }
+
         public DateTime LastDate { get; set; }
         public int AccountId { get; set; }
         public Account Account { get; set; }
+        //Kredi kartı veya Debit kart olacak şekilde 2 seçenek
         public CardType CardType { get; set; }
 
         /*

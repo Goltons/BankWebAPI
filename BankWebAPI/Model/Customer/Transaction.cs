@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static BankWebAPI.Model.Enums;
+﻿using static BankWebAPI.Model.Enums;
 
 namespace BankWebAPI.Model.Customer
 {
@@ -13,7 +9,7 @@ namespace BankWebAPI.Model.Customer
 
         }
         public int TransactionId { get; set; }
-        public double TransactionAmount { get; set; } 
+        public double TransactionAmount { get; set; }
         public bool IsApproved { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }

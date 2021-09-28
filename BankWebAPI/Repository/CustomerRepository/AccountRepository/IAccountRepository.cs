@@ -12,7 +12,7 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         Account getByCustomerId(int customerId);
         int AccountSupplementNumber(int accNumber);
         List<Account> getAllByAccountNumber(int accNumber);
-        Account getAccountForTransfer(int branchCode, int accountNumber, int SupplementNumber,string receiverName);
+        Account getAccountForTransfer(int branchCode, int accountNumber, int AccountAdditionalNumber, string receiverName);
         Account getAccountForIBANTransfer(string iban, string receiverName);
         
 

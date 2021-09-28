@@ -12,5 +12,6 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
     {
         Card[] GetCardsByAccountId(int accountId);
         Card GetByAccountId(int accountId);
+        Card[] getCardsForApprove();
     }
 }

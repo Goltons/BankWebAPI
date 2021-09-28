@@ -26,5 +26,10 @@ namespace BankWebAPI.Controllers
         {
             return _transferService.TransferMoney(transfer, cardId);
         }
+        [HttpGet("getall")]
+        public Transfer[] getAllforApprove()
+        {
+            return _transferService.getAllforApprove();
+        }
     }
 }

@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Model\CustomerManager\" />
-    <Folder Include="Model\BankWroker\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,10 +18,14 @@ staj 13.gün hesap açma sayfasının tasarımın react tarafında yapılması v
 staj 14.gün kart başvurusu yapma ve bu başvuru için gerekli sayfanın tasarım ve client side kodları yazılmıştır api tarafında c# ile kart başvurusu yaparken sistemin üretmesi gereken değişkenleri ve bu üretilen değişkenlerin doğru olup olmadığının kontrolünün yapılıp veritabanına  kaydedilmesini sağlayana methode ve işlemler yapılmıştır card controller ı oluşturul bu controller önce postman ile daha sonra tasarımını yaptıktan sonra react ile veri gönderilp bu verinin doğru bi şekilde kaydedildiği test edilmiştir
 staj 15.gün fatura ödeme componenti  ve kredi başvurusu yapma kredi ödeme planı componentleri yaptım.Fatura ödemesini seçilen kart üzerinden yapılan metodları yazdım.ödeme yapıldıktan sonra veritabanından kart ve fatura için güncellemeler yapacak şekilde kodlamaları yaptım.react de componentları oluşturdum ve bunlar için gerekli js html kodlarını yazdım.c# üzerinde gerekli metodları yazdım.
 staj 16.gün /*transfer işlemleri için gerekli olan nesneyi ve repository service sınıflarını oluşturdum gönderme seçeneğine gönderim yapacak metodları yazdım.React üzerinde 2 tane component dosyasını oluşturdum iban ve hesap numarası ile transfer yapabilecek kodlamayı yaptım gerekli tasarımları yaptım ve veritabanında transfer tablosu üzerinde transferleri kaydeden  repository ve servis dosyalarını olıuşturdum ve bu sınıfları test etmek için önce postman uygulaması ile daha sonra react ile component oluşturarak denedim.
-staj 17.gün miy banka çalışanı için gerekli metod ve sınıfları oluşturdum.navbar tasarımı
-staj 18.gün miy banko onay işlem componentini yaparız ve ilk için gerekli tasarımları yaptım./*
-staj 19.gün miy banka için tasarım/*
+staj 17.gün miy banko çalışanı için gerekli metod ve sınıfları oluşturdum.Bugün onay işlemleri ve componenti bitmeli 15 16 17 defter sayfaları doldurulmalı
+staj 18.gün miy banko onay işlem componentini yaparız ve ilk için gerekli tasarımları yaptım. //buton eklenecek ve transfer geçmişi componentinavbar yaparım 
+staj 19.gün navbar tasarımı yapıldı kullanıcı tipine göre farklı navbarlar gösterilidi ekranda.Bootstrap kütüphanesinden faydalanıldı.önceki gün yazdığım kodlarda aldığım hatadan dolayı bir takım düzenlemeler yaptım.
 staj 20.gün projenin test
-ek 2 gün var haftasonu hataları düzelt
-profil update/kart detay update/şifre sıfırlama/route/kredi ödeme planı/kredi ödeme/miy class ve role based route
-bugün navbar account ve kartta düzenlemeler kredi ödeme yazma+cardupdate page+bootstrap /*miy banko sınıfları ve componentleri
+haftasonu düzenlemeler 
+cuma imzalansa son2 sayfada 
+ek 2 gün var haftasonu 
+haftasonu kart detay update/route/
+kredi ödeme
+account ve kartta düzenlemeler kredi ödeme yazma+cardupdate page
+//hesap kapatma/kart işlemleri/kredi ödeme//*3 saatte yapsam//*2saat/*2saat/*navbar 1saat//**5+7+8+

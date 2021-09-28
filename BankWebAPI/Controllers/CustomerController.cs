@@ -10,21 +10,24 @@ using System.Threading.Tasks;
 
 namespace BankWebAPI.Controllers
 {
-    [Route("/api/user")]
+    [Route("/api/customer")]
     public class CustomerController:Controller
     {
         private readonly ICustomerService _customerService;
-        private readonly ILoanService _loanService;
-        public CustomerController(ICustomerService customerService, ILoanService loanService)
+        public CustomerController(ICustomerService customerService)
         {
-            _customerService = customerService;
-            _loanService = loanService;
+            _customerService = customerService;   
         }
+        [HttpPost]
+        [Route("register")]
+        public void Register([FromBody] Customer customer)
+        {
+            _customerService.Register(customer);
 
+        }
         [HttpGet("{tcno}")]
         public Customer GetCustomerByTcNo(string tcno)
         {
-            
             return _customerService.GetByTcNo(tcno);
         }
     }

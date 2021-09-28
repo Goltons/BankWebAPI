@@ -19,6 +19,13 @@ namespace BankWebAPI.Controllers
         {
             _customerService = customerService;
         }
+        [HttpPost]
+        [Route("register")]
+        public void Register([FromForm] Customer customer)
+        {
+            _customerService.Register(customer);
+
+        }
         [HttpPost("login")]
         public Customer Login([FromForm] string tcNo, string Password)
         {   
@@ -32,12 +39,6 @@ namespace BankWebAPI.Controllers
                 return BadRequest(new { message = "Kullanici veya şifre hatalı!" });
             return Ok(user);
         }
-        [HttpPost]
-        [Route("register")]
-        public void Register([FromForm] Customer customer)
-        {
-            _customerService.Register(customer);
-
-        }
+       
     }
 }

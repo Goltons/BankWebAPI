@@ -45,7 +45,7 @@ namespace BankWebAPI.Repository.CustomerRepository.BillRepository
         {
             Customer customer = _context.Customers.FirstOrDefault(p => p.TcNo == tcNo);
             List<Bill> paidBills = (List<Bill>)_context.Bills.ToList()
-                .Where(p => p.IsApproved == true && customer.TcNo == p.Customer.TcNo);
+                .Where(p => p.IsPaid == true && customer.TcNo == p.Customer.TcNo);
             return paidBills;
         }
 

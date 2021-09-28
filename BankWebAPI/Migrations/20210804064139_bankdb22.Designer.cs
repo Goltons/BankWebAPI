@@ -4,14 +4,16 @@ using BankWebAPI.Model.Customer.EFDbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankWebAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210804064139_bankdb22")]
+    partial class bankdb22
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -19,45 +21,12 @@ namespace BankWebAPI.Migrations
                 .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("BankWebAPI.Model.BankEmployee", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TcNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("BankEmployees");
-                });
-
             modelBuilder.Entity("BankWebAPI.Model.Customer.Account", b =>
                 {
                     b.Property<int>("AccountId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AccountAdditionalNumber")
-                        .HasColumnType("int");
 
                     b.Property<int>("AccountBranchCode")
                         .HasColumnType("int");
@@ -71,14 +40,14 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
+                    b.Property<int>("AccountSupplementNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ApprovedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ApproverTcNo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Balance")
                         .HasColumnType("float");
@@ -158,9 +127,6 @@ namespace BankWebAPI.Migrations
 
                     b.Property<DateTime>("ApprovedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ApproverTcNo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CVC2")
                         .HasColumnType("int");
@@ -278,9 +244,6 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("ApprovedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ApproverTcNo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -360,14 +323,8 @@ namespace BankWebAPI.Migrations
                     b.Property<int>("AccountNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("AdditionalNumber")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("ApprovedDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("ApproverTcNo")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("BranchCode")
                         .HasColumnType("int");
@@ -399,6 +356,9 @@ namespace BankWebAPI.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("SupplementNumber")
+                        .HasColumnType("int");
+
                     b.Property<double>("TransferAmount")
                         .HasColumnType("float");
 
@@ -414,56 +374,11 @@ namespace BankWebAPI.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("receiverAccId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("receiverCardId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("senderAccId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("senderCardId")
-                        .HasColumnType("int");
-
                     b.HasKey("TransferId");
 
                     b.HasIndex("CustomerId");
 
                     b.ToTable("Transfers");
-                });
-
-            modelBuilder.Entity("BankWebAPI.Model.CustomerRelations", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("MyProperty")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TcNo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Token")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CustomerRelations");
                 });
 
             modelBuilder.Entity("BankWebAPI.Model.Customer.Account", b =>

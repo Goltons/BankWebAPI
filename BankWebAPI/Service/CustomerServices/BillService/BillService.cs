@@ -25,28 +25,24 @@ namespace BankWebAPI.Service.CustomerServices.BillService
         {
             return _billRepository.getBillByBillNumber(BillNumber);
         }
-
         public Bill[] GetBillsByTcNo(string tcno)
         {
             return _billRepository.GetBillsByTcNo(tcno);
         }
-
         public List<Bill> GetPaidBills(string tcNo)
         {
             return _billRepository.GetPaidBillsByTcNo(tcNo);
         }
-
         public Bill PayBillFee(int cardId,string BillNumber)
         {
             Bill bill = _billRepository.getBillByBillNumber(BillNumber);
             Card cardToPay = _cardRepository.GetById(cardId);
             cardToPay.CardBalance -= bill.BillFee;
-            bill.IsApproved = true;
+            bill.IsPaid = true;
             _billRepository.update(bill);
             _cardRepository.update(cardToPay);
             return bill;
         }
-
         public void save(Bill bill)
         {
             

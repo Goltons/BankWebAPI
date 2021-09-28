@@ -10,10 +10,27 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
     {
         private readonly IAccountRepository _accountRepository;
         private readonly ICustomerRepository _customerRepository;
-        public AccountService(IAccountRepository accountRepository, ICustomerRepository customerRepository = null)
+        public AccountService(IAccountRepository accountRepository, ICustomerRepository customerRepository)
         {
             _accountRepository = accountRepository;
             _customerRepository = customerRepository;
+        }
+        
+        public Account[] Accounts(string tcno)
+        {
+            return _accountRepository.getAllAccountsByTcNo(tcno);
+        }
+        public bool CheckAccount(int customerId)
+        {
+            return _accountRepository.checkAccount(customerId);
+        }
+        public Account getByCustomerId(int customerId)
+        {
+            return _accountRepository.getByCustomerId(customerId);
+        }
+        public Account getMainAccount(int AccountNumber)
+        {
+            return _accountRepository.getByAccountNumber(AccountNumber);
         }
         public int AccountNumberGenerator()
         {
@@ -21,66 +38,41 @@ namespace BankWebAPI.Service.CustomerServices.AccountService
             Random rnd = new Random();
             for (int i = 0; i < 8; i++)
             {
-
                 int b = rnd.Next(0, 10);
                 if (i == 0 && b == 0) a += rnd.Next(1, 10).ToString();
                 a += b.ToString();
             }
             return Int32.Parse(a);
-
         }
-
-        public Account[] Accounts(string tcno)
-        {
-            return _accountRepository.getAllAccountsByTcNo(tcno);
-        }
-
-
         public void AddAccount(Account account)
         {
+            account.CreatedDate = DateTime.Now;
+            account.Customer = _customerRepository.GetById(account.CustomerId);
             //daha önce hesap oluşturmuş ve yeni bir hesap daha oluşturulacağı zaman bu method çalışacak
             if (CheckAccount(account.CustomerId))
             {
                 Account mainAccount = _accountRepository.getByCustomerId(account.CustomerId);
-                account.Customer = _customerRepository.GetById(account.CustomerId);
-                account.CreatedDate = DateTime.Now;
                 account.AccountNumber = mainAccount.AccountNumber;
-                account.AccountSupplementNumber = _accountRepository.AccountSupplementNumber(account.AccountNumber) + 1;
-                account.IBAN = "TR45000001" + account.AccountNumber + account.AccountSupplementNumber.ToString();
-                //supplement number son getirilip 1 arttırılacak account code düzenlemesinin yapılması
+                account.AccountAdditionalNumber = _accountRepository.AccountSupplementNumber(account.AccountNumber)+1;
+                Random rnd = new Random();
+                account.IBAN = "TR" + rnd.Next(10, 50).ToString()
+                    + "000001" + account.AccountNumber+ account.AccountAdditionalNumber.ToString();
+                //ek no'ya 1 eklenecek account code düzenlemesinin yapılması
                 _accountRepository.save(account);
             }
             else
             {
-                //gönderilen hesap ilk kayıt hesabımı bunun kontrolünün yapılıp yönledirilmesi
-                //eğer ilk kez ise else içindeki addaccount methoduna yönlendirme yapılacak
                 int accnum = AccountNumberGenerator();
-
                 if (_accountRepository.getByAccountNumber(accnum) != null) accnum = AccountNumberGenerator();
-                //default hesap ek no su 5000 olarak belirtildiği için ilk hesap açımında onu değer olarak atıyorum.
-                account.Customer = _customerRepository.GetById(account.CustomerId);
-                account.AccountSupplementNumber = 5000;
+                //default hesap ek no 5000 
+                account.AccountAdditionalNumber = 5000;
                 account.AccountNumber = accnum;
-                account.CreatedDate = DateTime.Now;
-                account.IBAN = "TR45000001" + accnum + account.AccountSupplementNumber.ToString();
+                Random rnd = new Random();
+                account.IBAN = "TR" + rnd.Next(10, 50).ToString() + "000001" 
+                    + accnum + account.AccountAdditionalNumber.ToString();
                 _accountRepository.save(account);
             }
 
-        }
-
-        public bool CheckAccount(int customerId)
-        {
-            return _accountRepository.checkAccount(customerId);
-        }
-
-        public Account getByCustomerId(int customerId)
-        {
-            return _accountRepository.getByCustomerId(customerId);
-        }
-
-        public Account getMainAccount(int AccountNumber)
-        {
-            return _accountRepository.getByAccountNumber(AccountNumber);
         }
     }
 }

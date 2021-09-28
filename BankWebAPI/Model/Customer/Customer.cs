@@ -34,9 +34,10 @@ namespace BankWebAPI.Model.Customer
         public DateTime BirthDate { get; set; }
         public bool IsEnable { get; set; }
         public List<Account> Accounts { get; set; }
+       
+        public List<Transfer> Transfers { get; set; } 
         public List<Loan> Loans { get; set; }
         public List<Transaction> Transactions { get; set; }
-        public List<Transfer> Transfers { get; set; }
         public List<Bill> Bills { get; set; }
         public UserRole UserRole{ get; set; }
         public string Token { get; set; }

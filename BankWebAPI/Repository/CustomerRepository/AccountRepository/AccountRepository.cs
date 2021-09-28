@@ -50,22 +50,15 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
         public Account[] getAllAccountsByTcNo(string tcno)
         {
             Customer customer = _context.Customers.FirstOrDefault(p => p.TcNo == tcno);
-            return _context.Accounts.Where(p => p.CustomerId == customer.CustomerId).ToArray();
+            return _context.Accounts.Where(p => 
+            p.CustomerId == customer.CustomerId).ToArray();
         }
-
         public bool checkAccount(int customerId)
         {
-            if (_context.Accounts.FirstOrDefault(p => p.CustomerId == customerId) != null) return true;
+            if (_context.Accounts.FirstOrDefault(p => p.CustomerId == customerId) != null) 
+                return true;
             return false;
         }
-
-        public int AccountSupplementNumber(int accNum)
-        {
-            List<Account> accounts = getAllByAccountNumber(accNum);
-            Account account = accounts.Last();
-            return account.AccountSupplementNumber;
-        }
-
         public Account getByCustomerId(int customerId)
         {
             return _context.Accounts.FirstOrDefault(p => p.CustomerId == customerId);
@@ -76,15 +69,21 @@ namespace BankWebAPI.Repository.CustomerRepository.AccountRepository
             return _context.Accounts.Where(p => p.AccountNumber == accNumber).ToList();
         }
 
-        public Account getAccountForTransfer(int branchCode, int accountNumber, int SupplementNumber, string receiverName)
+        public Account getAccountForTransfer(int branchCode, int accountNumber, int AccountAdditionalNumber, string receiverName)
         {
-            return _context.Accounts.FirstOrDefault(p => p.AccountBranchCode == branchCode && p.AccountNumber == accountNumber && p.AccountSupplementNumber == SupplementNumber&&p.Customer.CustomerName==receiverName);
+            return _context.Accounts.FirstOrDefault(p => p.AccountBranchCode == branchCode && p.AccountNumber == accountNumber && p.AccountAdditionalNumber == AccountAdditionalNumber && p.Customer.CustomerName==receiverName);
 
         }
 
         public Account getAccountForIBANTransfer(string iban, string receiverName)
         {
             return _context.Accounts.FirstOrDefault(p => p.IBAN == iban && p.Customer.CustomerName == receiverName);
+        }
+        public int AccountSupplementNumber(int accNum)
+        {
+            List<Account> accounts = getAllByAccountNumber(accNum);
+            Account account = accounts.Last();
+            return account.AccountAdditionalNumber;
         }
     }
 }

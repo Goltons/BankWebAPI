@@ -39,7 +39,6 @@ namespace BankWebAPI.Service.CustomerServices
             customer.Token = tokenHandler.WriteToken(token);
             // Sifre null olarak gonderilir.
             customer.Password = null;
-
             return customer;
         }
 

@@ -26,6 +26,10 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Logging;
 using BankWebAPI.Repository.CustomerRepository.TransferRepository;
 using BankWebAPI.Service.CustomerServices.TransferService;
+using BankWebAPI.Repository.CustomerRelationsRepos;
+using BankWebAPI.Service.BankWorkerServices.CustomerRelation;
+using BankWebAPI.Repository.BankEmployeeRepository;
+using BankWebAPI.Service.BankWorkerServices.BankEmployee;
 
 namespace BankWebAPI
 {
@@ -88,6 +92,10 @@ namespace BankWebAPI
             services.AddSingleton<ITransactionService, TransactionService>();
             services.AddTransient<ITransferRepository, TransferRepository>();
             services.AddSingleton<ITransferService, TransferService>();
+            services.AddTransient<ICustomerRelationsRepository, CustomerRelationsRepository>();
+            services.AddSingleton<ICustomerRelationsService, CustomerRelaitonsService>();
+            services.AddTransient<IBankEmployeeRepository, BankEmployeeRepository>();
+            services.AddSingleton<IBankEmployeeService, BankEmployeeService>();
 
 
             services.AddDbContext<ApplicationDbContext>

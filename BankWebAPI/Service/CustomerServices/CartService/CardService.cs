@@ -17,43 +17,31 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             _cardRepository = cardRepository;
             _accountRepository = accountRepository;
         }
-        public void AddNewCartToAcc(Card card)
+        public void CloseCardLimit(int id)
         {
-            card.CreatedDate = DateTime.Now;
-            card.CVC2 = CVC2Generate();
-            card.CardNumber = CardNumberGenerate();
-            card.LastDate = card.CreatedDate.AddYears(4);
-            _cardRepository.save(card);
+            Card card = _cardRepository.GetById(id);
+            card.CardLimit = 0;
+            _cardRepository.update(card);
         }
-        public void CloseCartLimit(int id)
+        public void DecreaseCardLimit(int id, double amaunt)
         {
-            Card cart = _cardRepository.GetById(id);
-            cart.CardLimit = 0;
-            _cardRepository.update(cart);
-        }
-        public void DecreaseCartLimit(int id, double amaunt)
-        {
-            Card cart = _cardRepository.GetById(id);
-            cart.CardLimit -= 100;
-            _cardRepository.update(cart);
-        }
-        public void DeleteCartFromAccount(int id)
-        {
-            _cardRepository.delete(_cardRepository.GetById(id));
+            Card card= _cardRepository.GetById(id);
+            card.CardLimit -= 100;
+            _cardRepository.update(card);
         }
         public string CardNumberGenerate()
         {
             Random rnd = new Random();
-            string cartNumber = "";
+            string cardNumber = "";
             for (int i = 0; i < 16; i++)
             {
                 int a = rnd.Next(0, 10);
-                if (a == 0 && i == 0) cartNumber += rnd.Next(1, 10).ToString();
-                cartNumber += a.ToString();
+                if (a == 0 && i == 0) cardNumber += rnd.Next(1, 10).ToString();
+                cardNumber += a.ToString();
             }
-            return cartNumber;
+            return cardNumber;
         }
-        public int CartPasswordGenerate()
+        public int CardPasswordGenerate()
         {
             Random rnd = new Random();
             return rnd.Next(1000, 9999);
@@ -63,40 +51,41 @@ namespace BankWebAPI.Service.CustomerServices.CartService
             Random rnd = new Random();
             return rnd.Next(100, 999);
         }
-        public void IncreaseCartLimit(int id, double amount)
+        public void IncreaseCardLimit(int id, double amount)
         {
-            Card cart = _cardRepository.GetById(id);
-            cart.CardLimit += 100;
-            _cardRepository.update(cart);
+            Card card = _cardRepository.GetById(id);
+            card.CardLimit += 100;
+            _cardRepository.update(card);
         }
-        public void PayCartDebt(int id, double amountToPay)
+        public void PayCardDebt(int id, double amountToPay)
         {
-            Card cart = _cardRepository.GetById(id);
-            cart.CardDebt-= amountToPay;
-            _cardRepository.update(cart);
+            Card card = _cardRepository.GetById(id);
+            card.CardDebt-= amountToPay;
+            _cardRepository.update(card);
         }
-        public void AddFirstCart(int accountId)
-        {
-            Card cartToAdd = new Card();
-            //cartToAdd.CardPassword = CartPasswordGenerate();
-            cartToAdd.CardNumber = CardNumberGenerate();
-            cartToAdd.CVC2 = CVC2Generate();
-            cartToAdd.CreatedDate = DateTime.Now;
-            cartToAdd.LastDate = cartToAdd.CreatedDate.AddYears(4);
-            cartToAdd.AccountId = accountId;
-            cartToAdd.CardType = Model.Enums.CardType.DEBIT;
-        }
-        //kredi kartlarında ödenmesi gereken gecikme faizi hesaplama
-        //asgari ödeme
-        //limit artış onayı 
         public void CardAppealService(Card card)
         {
             card.CardNumber = CardNumberGenerate();
             card.CVC2 = CVC2Generate();
             card.CreatedDate = DateTime.Now;
             card.LastDate = card.CreatedDate.AddYears(4);
+            card.Status = "İşleme Alındı";
             _cardRepository.save(card);
         }
+        public void DeleteCardFromAccount(int id)
+        {
+            _cardRepository.delete(_cardRepository.GetById(id));
+        }
+        
+        public void AddNewCardToAcc(Card card)
+        {
+            card.CreatedDate = DateTime.Now;
+            card.CVC2 = CVC2Generate();
+            card.CardNumber = CardNumberGenerate();
+            card.LastDate = card.CreatedDate.AddYears(4);
+            _cardRepository.save(card);
+        }
+       
         public List<Card> getAllByTcNo(string tcno)
         {
             Account[] accounts = _accountRepository.getAllAccountsByTcNo(tcno);
@@ -110,5 +99,34 @@ namespace BankWebAPI.Service.CustomerServices.CartService
                            }
             return cards;
         }
+        public void AddFirstCard(int accountId)
+        {
+            Card cardToAdd = new Card();
+            //cartToAdd.CardPassword = CartPasswordGenerate();
+            cardToAdd.CardNumber = CardNumberGenerate();
+            cardToAdd.CVC2 = CVC2Generate();
+            cardToAdd.CreatedDate = DateTime.Now;
+            cardToAdd.LastDate = cardToAdd.CreatedDate.AddYears(4);
+            cardToAdd.AccountId = accountId;
+            cardToAdd.CardType = Model.Enums.CardType.DEBIT;
+        }
+
+        public Card ConfirmCard(Card cardToConfirm)
+        {
+            if (cardToConfirm.Status == "Onaylandı")
+            {
+                // bir işlem yapılmasına gerek yok veritabanı güncelleme işlemini yapıyor onaylandığı için
+            }
+            throw new NotImplementedException();
+        }
+
+        public Card[] getAllForApprove()
+        {
+            return _cardRepository.getCardsForApprove();
+        }
+        //kredi kartlarında ödenmesi gereken gecikme faizi hesaplama
+        //asgari ödeme
+        //limit artış onayı
+        //
     }
 }

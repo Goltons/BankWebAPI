@@ -17,6 +17,8 @@ namespace BankWebAPI.Model.Customer.EFDbContext
         public virtual DbSet<Loan> Loans { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<Transfer> Transfers { get; set; }
+        public virtual DbSet<BankEmployee> BankEmployees { get; set; }
+        public virtual DbSet<CustomerRelations> CustomerRelations { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -30,8 +32,8 @@ namespace BankWebAPI.Model.Customer.EFDbContext
                 optionsBuilder
                 .UseSqlServer
                 (@"server=(localdb)\\MSSQLLocalDB;database=BankDb;Initial Catalog=master;
-Integrated Security=True;
-TrustServerCertificate=False;");
+                        Integrated Security=True;
+                        TrustServerCertificate=False;");
 
             }
         }

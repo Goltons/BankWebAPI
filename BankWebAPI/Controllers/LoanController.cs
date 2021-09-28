@@ -1,15 +1,12 @@
 ﻿using BankWebAPI.Model.Customer;
 using BankWebAPI.Service.CustomerServices.LoanService;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace BankWebAPI.Controllers
-{   
+{
     [Route("/api/loan")]
-    public class LoanController:Controller
+    public class LoanController : Controller
     {
         private readonly ILoanService _loanService;
         public LoanController(ILoanService loanService)
@@ -23,9 +20,8 @@ namespace BankWebAPI.Controllers
             return "işlem başarılı";
         }
         [HttpGet("{LoanTerm}/{amount}/{interestRate}")]
-        public string[] getPaymentPlan(int LoanTerm, double amount, double interestRate)
+        public List<string> getPaymentPlan(int LoanTerm, double amount, double interestRate)
         {
-
             return _loanService.GetPaymentPlan(LoanTerm, amount, interestRate);
         }
 

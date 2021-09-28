@@ -39,6 +39,12 @@ namespace BankWebAPI.Repository.CustomerRepository.CartRepository
         {
             return _context.Cards.Where(p => p.AccountId == accountId).ToArray();
         }
+
+        public Card[] getCardsForApprove()
+        {
+            return _context.Cards.Where(p => p.IsActive == false).ToArray();
+        }
+
         public void save(Card entity)
         {
             _context.Cards.Add(entity);

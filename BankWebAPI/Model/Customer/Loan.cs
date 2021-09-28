@@ -21,6 +21,9 @@ namespace BankWebAPI.Model.Customer
         public int LoanTerm { get; set; }
         public bool IsApproved { get; set; }
         public bool IsPaid { get; set; }
+        public string Status { get; set; }
+        public DateTime ApprovedDate { get; set; }
+        public string ApproverTcNo { get; set; }
         public double InterestRate { get; set; }
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }

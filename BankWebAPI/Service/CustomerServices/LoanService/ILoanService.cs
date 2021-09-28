@@ -11,6 +11,7 @@ namespace BankWebAPI.Service.CustomerServices.LoanService
     {
         void LoanApply(Loan loan);
         void PayLaonDebt(int loanId, double amountToPay);
-        string[] GetPaymentPlan(int LoanTerm, double amount, double interestRate);
+        List<string> GetPaymentPlan(int LoanTerm, double amount, double interestRate);
+        Loan ConfirmLoan(Loan loanToApprove);
     }
 }
